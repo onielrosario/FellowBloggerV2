@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1942239862700CAD6C8 /* AppDelegate.swift */; };
-		096BD1972239862700CAD6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ViewController.swift */; };
+		096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ProfileViewController.swift */; };
 		096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD1982239862700CAD6C8 /* Main.storyboard */; };
 		096BD19C2239862B00CAD6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 096BD19B2239862B00CAD6C8 /* Assets.xcassets */; };
 		096BD19F2239862B00CAD6C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD19D2239862B00CAD6C8 /* LaunchScreen.storyboard */; };
@@ -20,13 +20,21 @@
 		096BD1B32239951000CAD6C8 /* Blogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1B22239951000CAD6C8 /* Blogger.swift */; };
 		096BD1B622399AAC00CAD6C8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1B522399AAC00CAD6C8 /* Date+Extensions.swift */; };
 		096BD1B822399AD200CAD6C8 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1B722399AD200CAD6C8 /* String+Date.swift */; };
+		09F4F808223AB52E00FDA7C0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F4F807223AB52E00FDA7C0 /* Login.storyboard */; };
+		09F4F80A223AB71000FDA7C0 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F4F809223AB71000FDA7C0 /* Login.xib */; };
+		09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F80B223AC30400FDA7C0 /* LoginView.swift */; };
+		09F4F80F223AC51F00FDA7C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F80E223AC51F00FDA7C0 /* LoginViewController.swift */; };
+		09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F812223AD29600FDA7C0 /* FellowSearchViewController.swift */; };
+		09F4F815223AD2A500FDA7C0 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F814223AD2A500FDA7C0 /* NewsFeedViewController.swift */; };
+		09F4F818223AD35100FDA7C0 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F817223AD35100FDA7C0 /* MainTabController.swift */; };
+		09F4F81A223AF1EB00FDA7C0 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */; };
 		C638D1BAAC2DE18C776178EF /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D4537D00FFAAAE0DC1AC34 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		096BD1912239862700CAD6C8 /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096BD1942239862700CAD6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		096BD1962239862700CAD6C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		096BD1962239862700CAD6C8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		096BD1992239862700CAD6C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		096BD19B2239862B00CAD6C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		096BD19E2239862B00CAD6C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,6 +47,14 @@
 		096BD1B22239951000CAD6C8 /* Blogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogger.swift; sourceTree = "<group>"; };
 		096BD1B522399AAC00CAD6C8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		096BD1B722399AD200CAD6C8 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		09F4F807223AB52E00FDA7C0 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		09F4F809223AB71000FDA7C0 /* Login.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
+		09F4F80B223AC30400FDA7C0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		09F4F80E223AC51F00FDA7C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		09F4F812223AD29600FDA7C0 /* FellowSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FellowSearchViewController.swift; sourceTree = "<group>"; };
+		09F4F814223AD2A500FDA7C0 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		09F4F817223AD35100FDA7C0 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		1F19228C391A4F4F8C01A6C6 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		40D4537D00FFAAAE0DC1AC34 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5402084E106FF840BAC930 /* Pods-FellowBloggerV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.debug.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,14 +93,13 @@
 		096BD1932239862700CAD6C8 /* FellowBloggerV2 */ = {
 			isa = PBXGroup;
 			children = (
+				09F4F816223AD2EE00FDA7C0 /* supporting Files */,
+				09F4F811223AC54500FDA7C0 /* Storyboards */,
+				09F4F810223AC52800FDA7C0 /* Views */,
+				09F4F80D223AC50C00FDA7C0 /* Controllers */,
 				096BD1B422399A7200CAD6C8 /* Extensions */,
 				096BD1AF223994F000CAD6C8 /* Models */,
 				096BD1A8223993C200CAD6C8 /* Firebase Services */,
-				096BD1942239862700CAD6C8 /* AppDelegate.swift */,
-				096BD1962239862700CAD6C8 /* ViewController.swift */,
-				096BD1982239862700CAD6C8 /* Main.storyboard */,
-				096BD19B2239862B00CAD6C8 /* Assets.xcassets */,
-				096BD19D2239862B00CAD6C8 /* LaunchScreen.storyboard */,
 				096BD1A02239862B00CAD6C8 /* Info.plist */,
 				096BD1A62239884400CAD6C8 /* GoogleService-Info.plist */,
 			);
@@ -113,10 +128,51 @@
 		096BD1B422399A7200CAD6C8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */,
 				096BD1B522399AAC00CAD6C8 /* Date+Extensions.swift */,
 				096BD1B722399AD200CAD6C8 /* String+Date.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		09F4F80D223AC50C00FDA7C0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				09F4F80E223AC51F00FDA7C0 /* LoginViewController.swift */,
+				096BD1962239862700CAD6C8 /* ProfileViewController.swift */,
+				09F4F812223AD29600FDA7C0 /* FellowSearchViewController.swift */,
+				09F4F814223AD2A500FDA7C0 /* NewsFeedViewController.swift */,
+				09F4F817223AD35100FDA7C0 /* MainTabController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		09F4F810223AC52800FDA7C0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09F4F809223AB71000FDA7C0 /* Login.xib */,
+				09F4F80B223AC30400FDA7C0 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		09F4F811223AC54500FDA7C0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				096BD1982239862700CAD6C8 /* Main.storyboard */,
+				09F4F807223AB52E00FDA7C0 /* Login.storyboard */,
+				096BD19D2239862B00CAD6C8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		09F4F816223AD2EE00FDA7C0 /* supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				096BD1942239862700CAD6C8 /* AppDelegate.swift */,
+				096BD19B2239862B00CAD6C8 /* Assets.xcassets */,
+			);
+			path = "supporting Files";
 			sourceTree = "<group>";
 		};
 		6F03F61B7E6648F7ACCE3A7A /* Frameworks */ = {
@@ -200,7 +256,9 @@
 				096BD19F2239862B00CAD6C8 /* LaunchScreen.storyboard in Resources */,
 				096BD1A72239884400CAD6C8 /* GoogleService-Info.plist in Resources */,
 				096BD19C2239862B00CAD6C8 /* Assets.xcassets in Resources */,
+				09F4F808223AB52E00FDA7C0 /* Login.storyboard in Resources */,
 				096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */,
+				09F4F80A223AB71000FDA7C0 /* Login.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,13 +358,19 @@
 			files = (
 				096BD1AE2239941900CAD6C8 /* StorageService.swift in Sources */,
 				096BD1B622399AAC00CAD6C8 /* Date+Extensions.swift in Sources */,
+				09F4F818223AD35100FDA7C0 /* MainTabController.swift in Sources */,
 				096BD1AA223993F100CAD6C8 /* AuthService.swift in Sources */,
 				096BD1B32239951000CAD6C8 /* Blogger.swift in Sources */,
 				096BD1AC2239940200CAD6C8 /* DBService.swift in Sources */,
 				096BD1B12239950300CAD6C8 /* Blog.swift in Sources */,
-				096BD1972239862700CAD6C8 /* ViewController.swift in Sources */,
+				096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */,
 				096BD1B822399AD200CAD6C8 /* String+Date.swift in Sources */,
+				09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */,
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
+				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,
+				09F4F80F223AC51F00FDA7C0 /* LoginViewController.swift in Sources */,
+				09F4F81A223AF1EB00FDA7C0 /* UIViewController+Alerts.swift in Sources */,
+				09F4F815223AD2A500FDA7C0 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = typesAndVariables.FellowBloggerV2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.FellowBloggerV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = typesAndVariables.FellowBloggerV2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.FellowBloggerV2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

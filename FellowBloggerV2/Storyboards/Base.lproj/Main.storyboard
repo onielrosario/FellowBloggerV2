@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Snk-3U-5Tw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Fellow-->
+        <scene sceneID="VAX-Hd-mcF">
+            <objects>
+                <viewController storyboardIdentifier="FellowSearchVC" id="Re6-1S-cOm" customClass="FellowSearchViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vQH-57-Qgt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <viewLayoutGuide key="safeArea" id="GG2-26-qSk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search Fellow" image="Search" selectedImage="SearchFilled" id="OLl-ou-9oB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgy-n4-h6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="47"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="2fF-S7-P7G">
+            <objects>
+                <viewController storyboardIdentifier="NewsFeedVC" id="hnA-Ky-Cgo" customClass="NewsFeedViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z02-60-dzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.28333655330000002" green="0.4279294481" blue="0.4480184968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="Lq3-2x-oDR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Feed" image="News" selectedImage="NewsFilled" id="zlq-fh-Bw6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgX-QF-MoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="-609"/>
+        </scene>
+        <!--Main Tab Controller-->
+        <scene sceneID="62c-9X-2nA">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTab" id="Snk-3U-5Tw" customClass="MainTabController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AUh-td-sZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hnA-Ky-Cgo" kind="relationship" relationship="viewControllers" id="MIi-bl-S44"/>
+                        <segue destination="Re6-1S-cOm" kind="relationship" relationship="viewControllers" id="cQZ-vV-OZg"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6dm-rI-85Y"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fy3-r2-DcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1065" y="-63"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" id="BYZ-38-t0r" customClass="ProfileViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.63182455739999999" blue="0.5207678107" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="User" selectedImage="UserFilled" id="dAz-FX-qBy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="752"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="News" width="25" height="25"/>
+        <image name="NewsFilled" width="25" height="25"/>
+        <image name="Search" width="25" height="25"/>
+        <image name="SearchFilled" width="25" height="25"/>
+        <image name="User" width="25" height="25"/>
+        <image name="UserFilled" width="25" height="25"/>
+    </resources>
+</document>

@@ -34,7 +34,6 @@ struct BlogsCollectionKeys {
 
 final class DBService {
     private init() {}
-    
     public static var firestoreDB: Firestore = {
         let db = Firestore.firestore()
         let settings = db.settings
@@ -42,11 +41,9 @@ final class DBService {
         db.settings = settings
         return db
     }()
+    
+    
     //create separate func to post cover image
-    
-    
-
-    
     
     static public var generateDocumentId: String {
         return firestoreDB.collection(BloggersCollectionKeys.CollectionKey).document().documentID
