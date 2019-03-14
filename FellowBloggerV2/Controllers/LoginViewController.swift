@@ -59,7 +59,7 @@ extension LoginViewController: loginViewDelegate {
             let name = loginView.nameTextField.text else {
                 return
         }
-        switch accountLoginState {
+        switch accountState {
         case .newAccount:
             guard !name.isEmpty, !email.isEmpty, !pasword.isEmpty else {
                showAlert(title: "Missing fields", message: "all fields required", actionTitle: "Try again")
