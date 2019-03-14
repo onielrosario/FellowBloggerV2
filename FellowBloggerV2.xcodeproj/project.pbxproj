@@ -28,6 +28,9 @@
 		09F4F815223AD2A500FDA7C0 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F814223AD2A500FDA7C0 /* NewsFeedViewController.swift */; };
 		09F4F818223AD35100FDA7C0 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F817223AD35100FDA7C0 /* MainTabController.swift */; };
 		09F4F81A223AF1EB00FDA7C0 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */; };
+		09F4F81C223AFB6600FDA7C0 /* IBDesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F81B223AFB6600FDA7C0 /* IBDesignableViews.swift */; };
+		09F4F81E223B006400FDA7C0 /* ProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F4F81D223B006400FDA7C0 /* ProfileHeader.xib */; };
+		09F4F820223B09BA00FDA7C0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4F81F223B09BA00FDA7C0 /* ProfileView.swift */; };
 		C638D1BAAC2DE18C776178EF /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D4537D00FFAAAE0DC1AC34 /* Pods_FellowBloggerV2.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		09F4F814223AD2A500FDA7C0 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		09F4F817223AD35100FDA7C0 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		09F4F81B223AFB6600FDA7C0 /* IBDesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableViews.swift; sourceTree = "<group>"; };
+		09F4F81D223B006400FDA7C0 /* ProfileHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeader.xib; sourceTree = "<group>"; };
+		09F4F81F223B09BA00FDA7C0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F19228C391A4F4F8C01A6C6 /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		40D4537D00FFAAAE0DC1AC34 /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5402084E106FF840BAC930 /* Pods-FellowBloggerV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.debug.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 			children = (
 				09F4F809223AB71000FDA7C0 /* Login.xib */,
 				09F4F80B223AC30400FDA7C0 /* LoginView.swift */,
+				09F4F81B223AFB6600FDA7C0 /* IBDesignableViews.swift */,
+				09F4F81D223B006400FDA7C0 /* ProfileHeader.xib */,
+				09F4F81F223B09BA00FDA7C0 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,6 +265,7 @@
 				096BD19F2239862B00CAD6C8 /* LaunchScreen.storyboard in Resources */,
 				096BD1A72239884400CAD6C8 /* GoogleService-Info.plist in Resources */,
 				096BD19C2239862B00CAD6C8 /* Assets.xcassets in Resources */,
+				09F4F81E223B006400FDA7C0 /* ProfileHeader.xib in Resources */,
 				09F4F808223AB52E00FDA7C0 /* Login.storyboard in Resources */,
 				096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */,
 				09F4F80A223AB71000FDA7C0 /* Login.xib in Resources */,
@@ -365,6 +375,8 @@
 				096BD1B12239950300CAD6C8 /* Blog.swift in Sources */,
 				096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */,
 				096BD1B822399AD200CAD6C8 /* String+Date.swift in Sources */,
+				09F4F820223B09BA00FDA7C0 /* ProfileView.swift in Sources */,
+				09F4F81C223AFB6600FDA7C0 /* IBDesignableViews.swift in Sources */,
 				09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */,
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,
