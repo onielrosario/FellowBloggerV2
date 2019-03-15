@@ -33,9 +33,17 @@ class ProfileViewController: UIViewController {
         tableView.tableHeaderView = profileViewHeader
         tableView.delegate = self
         tableView.dataSource = self
+       
         tableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
         
     }
+    
+    private func pushControllers(controller: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
 
     
 }
@@ -63,12 +71,15 @@ extension ProfileViewController: UITableViewDataSource {
 }
 extension ProfileViewController: ProfileHeaderViewDelegate {
     func willSignOut(_ profileHeaderView: ProfileView) {
-        
+        authservice.signOutAccount()
     }
     
     func willEditProfile(_ profileHeaderView: ProfileView) {
-        
-        
+        pushControllers(controller: "EditVC")
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "My posts"
     }
     
     

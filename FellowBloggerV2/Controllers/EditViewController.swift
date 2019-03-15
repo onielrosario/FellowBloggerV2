@@ -21,7 +21,13 @@ class EditViewController: UIViewController {
     private func configureTableview() {
         tableView.dataSource = self
         tableView.delegate = self
+         tableView.tableFooterView = UIView()
     }
+    
+    @IBAction func savePressed(_ sender: UIBarButtonItem) {
+navigationController?.popViewController(animated: true)
+    }
+    
     
     
 }

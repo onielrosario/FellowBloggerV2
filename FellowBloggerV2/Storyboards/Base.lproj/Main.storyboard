@@ -142,15 +142,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsO-iW-Cnd">
-                                                    <rect key="frame" x="75" y="21" width="277" height="30"/>
+                                                    <rect key="frame" x="83.5" y="21" width="268.5" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGX-tw-gfa">
-                                                    <rect key="frame" x="25" y="25.5" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="25" y="22" width="50.5" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" red="0.1569241187" green="0.5672338053" blue="0.58288388319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -188,7 +188,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nxB-ek-fvf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit" id="Etf-U1-r6i"/>
+                    <navigationItem key="navigationItem" title="Edit" id="Etf-U1-r6i">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="nap-H6-lVN">
+                            <connections>
+                                <action selector="savePressed:" destination="nYe-kO-b7E" id="n2u-ek-2Xt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="editCoverImage" destination="jGM-Dx-EPq" id="K4T-ES-r7s"/>
                         <outlet property="editProfileButton" destination="P9R-OW-vQe" id="n76-rs-Bqr"/>
@@ -266,4 +272,5 @@
         <image name="UserFilled" width="25" height="25"/>
         <image name="tealCover" width="1280" height="720"/>
     </resources>
+    <color key="tintColor" red="0.1569241187" green="0.5672338053" blue="0.58288388319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
