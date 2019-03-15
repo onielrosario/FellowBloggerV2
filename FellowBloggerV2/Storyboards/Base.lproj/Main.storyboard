@@ -134,7 +134,7 @@
                                 <rect key="frame" x="0.0" y="303" width="375" height="364"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditCell" rowHeight="72" id="WFR-tp-ZC8" customClass="EditCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditCell" rowHeight="72" id="WFR-tp-ZC8" customClass="EditCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WFR-tp-ZC8" id="EgC-33-Rep">
@@ -167,6 +167,40 @@
                                             <outlet property="editTextField" destination="lsO-iW-Cnd" id="2Bw-ek-B7L"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BioCell" rowHeight="76" id="Vnn-Da-MW5" customClass="BioCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vnn-Da-MW5" id="Woj-hZ-AZs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2s-m0-KFf">
+                                                    <rect key="frame" x="25" y="24" width="50.5" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" red="0.1569241187" green="0.5672338053" blue="0.58288388319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Bio..." translatesAutoresizingMaskIntoConstraints="NO" id="cfA-pS-GGl">
+                                                    <rect key="frame" x="83.5" y="0.0" width="291.5" height="75.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cfA-pS-GGl" firstAttribute="top" secondItem="Woj-hZ-AZs" secondAttribute="top" id="FHH-T3-FZL"/>
+                                                <constraint firstItem="x2s-m0-KFf" firstAttribute="leading" secondItem="Woj-hZ-AZs" secondAttribute="leadingMargin" constant="10" id="ICv-W9-N39"/>
+                                                <constraint firstAttribute="bottom" secondItem="cfA-pS-GGl" secondAttribute="bottom" id="N6u-IK-drj"/>
+                                                <constraint firstItem="cfA-pS-GGl" firstAttribute="leading" secondItem="x2s-m0-KFf" secondAttribute="trailing" constant="8" id="NRA-nO-tsQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="cfA-pS-GGl" secondAttribute="trailing" id="gYq-Te-h7y"/>
+                                                <constraint firstItem="x2s-m0-KFf" firstAttribute="centerY" secondItem="Woj-hZ-AZs" secondAttribute="centerY" id="n3K-zI-cls"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bioCellLabel" destination="x2s-m0-KFf" id="dw3-BH-uwA"/>
+                                            <outlet property="bioTextField" destination="cfA-pS-GGl" id="Ufu-a0-gCb"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -175,7 +209,6 @@
                             <constraint firstItem="fnW-eD-ums" firstAttribute="top" secondItem="nxB-ek-fvf" secondAttribute="top" constant="8" id="4WS-UB-yfg"/>
                             <constraint firstItem="nxB-ek-fvf" firstAttribute="trailing" secondItem="7sA-ak-IL4" secondAttribute="trailing" id="6JG-z3-ALU"/>
                             <constraint firstItem="7sA-ak-IL4" firstAttribute="top" secondItem="jGM-Dx-EPq" secondAttribute="bottom" id="7mi-It-yZ2"/>
-                            <constraint firstItem="nxB-ek-fvf" firstAttribute="bottom" secondItem="7sA-ak-IL4" secondAttribute="bottom" id="IBT-H7-YhP"/>
                             <constraint firstItem="P9R-OW-vQe" firstAttribute="centerY" secondItem="tnC-yI-HTN" secondAttribute="centerY" multiplier="0.6" id="OR7-Fe-Ymw"/>
                             <constraint firstItem="jGM-Dx-EPq" firstAttribute="leading" secondItem="tnC-yI-HTN" secondAttribute="leading" constant="8" id="SIV-ZZ-ajQ"/>
                             <constraint firstItem="7sA-ak-IL4" firstAttribute="leading" secondItem="nxB-ek-fvf" secondAttribute="leading" id="ZKS-y3-fer"/>
@@ -184,6 +217,7 @@
                             <constraint firstItem="jGM-Dx-EPq" firstAttribute="top" secondItem="fnW-eD-ums" secondAttribute="bottom" constant="8" id="igp-9k-ywB"/>
                             <constraint firstAttribute="trailing" secondItem="jGM-Dx-EPq" secondAttribute="trailing" constant="8" id="oYS-kU-uwg"/>
                             <constraint firstItem="fnW-eD-ums" firstAttribute="leading" secondItem="nxB-ek-fvf" secondAttribute="leading" constant="8" id="rBK-eA-DHR"/>
+                            <constraint firstItem="nxB-ek-fvf" firstAttribute="bottom" secondItem="7sA-ak-IL4" secondAttribute="bottom" id="zDr-61-FUi"/>
                             <constraint firstItem="P9R-OW-vQe" firstAttribute="centerX" secondItem="jGM-Dx-EPq" secondAttribute="centerX" id="zMz-ju-Yn8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nxB-ek-fvf"/>
@@ -204,6 +238,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ek-mX-9mM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2592.8000000000002" y="751.57421289355329"/>
+        </scene>
+        <!--Edit Bio-->
+        <scene sceneID="a2m-yG-vrR">
+            <objects>
+                <viewController storyboardIdentifier="EditBioVC" id="Di7-hD-Ane" customClass="EditBioViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J9d-AP-ear">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wfm-EZ-PhO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wfm-EZ-PhO" firstAttribute="leading" secondItem="OCa-t2-Qxz" secondAttribute="leading" id="Vwr-Zr-DWv"/>
+                            <constraint firstItem="Wfm-EZ-PhO" firstAttribute="top" secondItem="OCa-t2-Qxz" secondAttribute="top" id="a09-OO-eeb"/>
+                            <constraint firstItem="OCa-t2-Qxz" firstAttribute="trailing" secondItem="Wfm-EZ-PhO" secondAttribute="trailing" id="hqT-Ev-xTk"/>
+                            <constraint firstItem="OCa-t2-Qxz" firstAttribute="bottom" secondItem="Wfm-EZ-PhO" secondAttribute="bottom" id="jqf-JL-gPh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OCa-t2-Qxz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Bio" id="3jp-DR-tC7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4u8-YQ-N6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4416.8000000000002" y="757.87106446776613"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ed6-YT-HHF">
@@ -260,6 +324,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OU-oV-Xy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1746" y="752"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QWB-HD-Lke">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4AO-aw-x38" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccE-Tf-z2W">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Di7-hD-Ane" kind="relationship" relationship="rootViewController" id="V5V-dz-PDC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYM-Px-CJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3477.5999999999999" y="757.87106446776613"/>
         </scene>
     </scenes>
     <resources>

@@ -1,18 +1,19 @@
 //
-//  MainTabController.swift
+//  EditBioViewController.swift
 //  FellowBloggerV2
 //
-//  Created by Oniel Rosario on 3/14/19.
+//  Created by Oniel Rosario on 3/15/19.
 //  Copyright © 2019 Oniel Rosario. All rights reserved.
 //
 
 import UIKit
 
-class MainTabController: UITabBarController {
+class EditBioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+     
     }
 
 }
