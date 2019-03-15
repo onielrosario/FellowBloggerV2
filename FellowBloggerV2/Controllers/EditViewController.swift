@@ -21,8 +21,9 @@ class EditViewController: UIViewController {
     private func configureTableview() {
         tableView.dataSource = self
         tableView.delegate = self
-        
     }
+    
+    
 }
 
 extension EditViewController: UITableViewDataSource {
@@ -38,11 +39,10 @@ extension EditViewController: UITableViewDataSource {
         cell.editLabel.text = labelTitle
         return cell
     }
-    
-    
-    
 }
 
 extension EditViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
