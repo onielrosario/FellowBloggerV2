@@ -8,14 +8,49 @@
 
 import UIKit
 
+
+protocol ProfileHeaderViewDelegate: AnyObject {
+    func willSignOut(_ profileHeaderView: ProfileView)
+    func willEditProfile(_ profileHeaderView: ProfileView)
+}
+
 class ProfileView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var profileImage: CircularImageView!
+    @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var bloggerName: UILabel!
+    @IBOutlet weak var bioText: UITextView!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    weak var delegate: ProfileHeaderViewDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+        commonInit()
 
+    }
+    
+    private func commonInit() {
+        Bundle.main.loadNibNamed("ProfileHeader", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = bounds
+        
+    }
+    
+    @IBAction func signOutPressed(_ sender: UIButton) {
+        delegate?.willSignOut(self)
+    }
+    
+    @IBAction func editPressed(_ sender: UIButton) {
+        delegate?.willEditProfile(self)
+    }
+    
+    
+    
 }

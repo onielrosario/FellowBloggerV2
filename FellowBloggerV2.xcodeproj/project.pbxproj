@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090BDEC1223B62D80088465A /* UIImageView+Curves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDEC0223B62D80088465A /* UIImageView+Curves.swift */; };
+		090BDEC7223BED920088465A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDEC6223BED920088465A /* ProfileCell.swift */; };
+		090BDEC9223BEDD00088465A /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090BDEC8223BEDD00088465A /* ProfileCell.xib */; };
 		096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1942239862700CAD6C8 /* AppDelegate.swift */; };
 		096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ProfileViewController.swift */; };
 		096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD1982239862700CAD6C8 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090BDEC0223B62D80088465A /* UIImageView+Curves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Curves.swift"; sourceTree = "<group>"; };
+		090BDEC6223BED920088465A /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		090BDEC8223BEDD00088465A /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		096BD1912239862700CAD6C8 /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096BD1942239862700CAD6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096BD1962239862700CAD6C8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090BDEC5223BED890088465A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				090BDEC6223BED920088465A /* ProfileCell.swift */,
+				090BDEC8223BEDD00088465A /* ProfileCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		096BD1882239862700CAD6C8 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +114,7 @@
 		096BD1932239862700CAD6C8 /* FellowBloggerV2 */ = {
 			isa = PBXGroup;
 			children = (
+				090BDEC5223BED890088465A /* Cells */,
 				09F4F816223AD2EE00FDA7C0 /* supporting Files */,
 				09F4F811223AC54500FDA7C0 /* Storyboards */,
 				09F4F810223AC52800FDA7C0 /* Views */,
@@ -137,6 +153,7 @@
 				09F4F819223AF1EB00FDA7C0 /* UIViewController+Alerts.swift */,
 				096BD1B522399AAC00CAD6C8 /* Date+Extensions.swift */,
 				096BD1B722399AD200CAD6C8 /* String+Date.swift */,
+				090BDEC0223B62D80088465A /* UIImageView+Curves.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -263,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				096BD19F2239862B00CAD6C8 /* LaunchScreen.storyboard in Resources */,
+				090BDEC9223BEDD00088465A /* ProfileCell.xib in Resources */,
 				096BD1A72239884400CAD6C8 /* GoogleService-Info.plist in Resources */,
 				096BD19C2239862B00CAD6C8 /* Assets.xcassets in Resources */,
 				09F4F81E223B006400FDA7C0 /* ProfileHeader.xib in Resources */,
@@ -380,6 +398,8 @@
 				09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */,
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,
+				090BDEC1223B62D80088465A /* UIImageView+Curves.swift in Sources */,
+				090BDEC7223BED920088465A /* ProfileCell.swift in Sources */,
 				09F4F80F223AC51F00FDA7C0 /* LoginViewController.swift in Sources */,
 				09F4F81A223AF1EB00FDA7C0 /* UIViewController+Alerts.swift in Sources */,
 				09F4F815223AD2A500FDA7C0 /* NewsFeedViewController.swift in Sources */,
