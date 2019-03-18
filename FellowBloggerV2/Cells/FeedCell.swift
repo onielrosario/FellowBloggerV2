@@ -11,7 +11,7 @@ import UIKit
 class FeedCell: UITableViewCell {
     @IBOutlet weak var profilePhoto: CircularImageView!
     @IBOutlet weak var feedPhoto: UIImageView!
-    @IBOutlet weak var feedDescription: UIView!
+    @IBOutlet weak var feedDescription: UITextView!
     
     
     

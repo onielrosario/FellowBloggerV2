@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! 
@@ -15,6 +17,7 @@ class ProfileViewController: UIViewController {
         return headerView
     }()
     private let authservice = AppDelegate.authService
+    private var listener: ListenerRegistration!
     private var blogs = [Blog]() {
         didSet {
             DispatchQueue.main.async {
@@ -27,6 +30,23 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         profileViewHeader.delegate = self
+    }
+    
+    
+    public func getBlogs() {
+//        refreshcontrol.beginRefreshing()
+        listener = DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .addSnapshotListener { [weak self] (snapshot, error) in
+                if let error = error {
+                    print("failed to get blogs with error: \(error.localizedDescription)")
+                } else if let snapshot = snapshot {
+                    self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
+                }
+//                DispatchQueue.main.async {
+//                    self?.refreshcontrol.endRefreshing()
+//                }
+        }
     }
     
     private func configureTableView() {
@@ -43,9 +63,6 @@ class ProfileViewController: UIViewController {
         let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
         navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
-
-    
 }
 
 
@@ -58,13 +75,16 @@ extension ProfileViewController: UITableViewDelegate {
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return blogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as? ProfileCell else {
             return UITableViewCell()
         }
+        let blog = blogs[indexPath.row]
+        cell.blogDescription.text = blog.blogDescription
+        cell.blogImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
         
         return cell
     }

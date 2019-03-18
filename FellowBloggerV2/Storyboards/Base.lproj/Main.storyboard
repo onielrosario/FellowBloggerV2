@@ -94,7 +94,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedCell" rowHeight="453" id="N2v-rQ-Xhs" customClass="FeedCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedCell" rowHeight="453" id="N2v-rQ-Xhs" customClass="FeedCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="453"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N2v-rQ-Xhs" id="p5j-lr-ZmR">
@@ -136,7 +136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="feedDescription" destination="p5j-lr-ZmR" id="dot-pQ-G29"/>
+                                            <outlet property="feedDescription" destination="agH-KF-agj" id="Nn2-dJ-Qux"/>
                                             <outlet property="feedPhoto" destination="a9A-Wt-tkH" id="pcX-6o-Tkx"/>
                                             <outlet property="profilePhoto" destination="dj8-Wp-MkH" id="mb7-g3-3Qi"/>
                                         </connections>

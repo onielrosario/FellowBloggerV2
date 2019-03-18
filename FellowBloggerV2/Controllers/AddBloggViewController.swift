@@ -38,6 +38,7 @@ class AddBloggViewController: UIViewController {
                                                   action: #selector(libraryButtonPressed))
         let flexibleBarItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbar.items = [cameraBarItem, flexibleBarItem, photoLibraryBarItem]
+        blogDescription.inputAccessoryView = toolbar
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraBarItem.isEnabled = false
         }
