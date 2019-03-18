@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         return headerView
     }()
     private let authservice = AppDelegate.authService
+    private var user: User!
     private var listener: ListenerRegistration!
     private var blogs = [Blog]() {
         didSet {
@@ -30,18 +31,23 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         profileViewHeader.delegate = self
+        getBlogs()
     }
     
     
     public func getBlogs() {
-        listener = DBService.firestoreDB
-            .collection(BlogsCollectionKeys.CollectionKey)
-            .addSnapshotListener { [weak self] (snapshot, error) in
-                if let error = error {
-                    print("failed to get blogs with error: \(error.localizedDescription)")
-                } else if let snapshot = snapshot {
-                    self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
-                }
+        if let user = self.authservice.getCurrentUser() {
+            listener = DBService.firestoreDB
+                .collection(BlogsCollectionKeys.CollectionKey)
+                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.uid)
+                .addSnapshotListener { [weak self] (snapshot, error) in
+                    if let error = error {
+                        print("failed to get blogs with error: \(error.localizedDescription)")
+                    } else if let snapshot = snapshot {
+                        self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
+                    }
+                    
+            }
         }
     }
     
@@ -49,9 +55,7 @@ class ProfileViewController: UIViewController {
         tableView.tableHeaderView = profileViewHeader
         tableView.delegate = self
         tableView.dataSource = self
-       
         tableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
-        
     }
     
     private func pushControllers(controller: String) {
@@ -81,7 +85,10 @@ extension ProfileViewController: UITableViewDataSource {
         let blog = blogs[indexPath.row]
         cell.blogDescription.text = blog.blogDescription
         cell.blogImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
-        
+        user = authservice.getCurrentUser()
+        if let userPhoto = user.photoURL?.absoluteString {
+             cell.profileImage.kf.setImage(with: URL(string: userPhoto), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+        }
         return cell
     }
 }

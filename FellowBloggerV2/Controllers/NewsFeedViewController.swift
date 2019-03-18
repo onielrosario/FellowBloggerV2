@@ -67,7 +67,6 @@ class NewsFeedViewController: UIViewController {
                     
                 }
             }
-        
     }
     
     private func  configureTableView() {
@@ -117,6 +116,4 @@ extension NewsFeedViewController: UITableViewDataSource {
             }
         }
     }
-    
-    
 }
