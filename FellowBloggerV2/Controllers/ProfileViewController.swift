@@ -34,7 +34,6 @@ class ProfileViewController: UIViewController {
     
     
     public func getBlogs() {
-//        refreshcontrol.beginRefreshing()
         listener = DBService.firestoreDB
             .collection(BlogsCollectionKeys.CollectionKey)
             .addSnapshotListener { [weak self] (snapshot, error) in
@@ -43,9 +42,6 @@ class ProfileViewController: UIViewController {
                 } else if let snapshot = snapshot {
                     self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
                 }
-//                DispatchQueue.main.async {
-//                    self?.refreshcontrol.endRefreshing()
-//                }
         }
     }
     

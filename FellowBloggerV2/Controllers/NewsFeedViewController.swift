@@ -38,11 +38,8 @@ class NewsFeedViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         getBlogs()
-//        getBloggers()
     }
-//    private func getBloggers() {
-//
-//    }
+
  
 
     
@@ -105,8 +102,20 @@ extension NewsFeedViewController: UITableViewDataSource {
    let blog = blogs[indexPath.row]
         cell.feedDescription.text = blog.blogDescription
         cell.feedPhoto.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
-//        cell.profilePhoto.kf.setImage(with: URL(string: blog.bloggerId), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
+      fetchBlogCreatorPhoto(userid: blog.bloggerId, cell: cell, blog: blog)
         return cell
+    }
+    
+    private func fetchBlogCreatorPhoto(userid: String, cell: FeedCell, blog: Blog) {
+        DBService.getBlogger(userId: userid) { (error, blogger) in
+            if let error = error {
+                print("failed to get blogger with error: \(error.localizedDescription)")
+            } else if let blogger = blogger {
+              DBService.firestoreDB.collection(BlogsCollectionKeys.CreatedDateKey)
+                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger.bloggerId)
+                cell.profilePhoto.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+            }
+        }
     }
     
     
