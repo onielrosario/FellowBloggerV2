@@ -19,6 +19,7 @@
 - [ ] user can search for other bloggers in the search tab 
 - [ ] selecting a blogger from the search takes the user to the blogger's profile page
 - [ ] user can view all blogs of a fellow blogger after selecting their profile
+# extra credit
 - [ ] user can like a blog and view in a favorites tab
 - [ ] user can share a blog
 - [ ] user can comment on a blog (see database schema for document fields)
