@@ -19,6 +19,7 @@
 		096461B9223F28FB00665894 /* AddBloggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B8223F28FB00665894 /* AddBloggViewController.swift */; };
 		096461BB223FE2BC00665894 /* UIViewcontroller+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461BA223FE2BC00665894 /* UIViewcontroller+extension.swift */; };
 		096461BD2240142200665894 /* DBService+Bloggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461BC2240142200665894 /* DBService+Bloggers.swift */; };
+		096461BF2240273F00665894 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461BE2240273F00665894 /* DetailViewController.swift */; };
 		096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1942239862700CAD6C8 /* AppDelegate.swift */; };
 		096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ProfileViewController.swift */; };
 		096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD1982239862700CAD6C8 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		096461B8223F28FB00665894 /* AddBloggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBloggViewController.swift; sourceTree = "<group>"; };
 		096461BA223FE2BC00665894 /* UIViewcontroller+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller+extension.swift"; sourceTree = "<group>"; };
 		096461BC2240142200665894 /* DBService+Bloggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Bloggers.swift"; sourceTree = "<group>"; };
+		096461BE2240273F00665894 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		096BD1912239862700CAD6C8 /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096BD1942239862700CAD6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096BD1962239862700CAD6C8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				090BDECA223C08570088465A /* EditViewController.swift */,
 				090BDED0223C33E30088465A /* EditBioViewController.swift */,
 				090BDED2223C3FA70088465A /* SearchFellowResultController.swift */,
+				096461BE2240273F00665894 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				096BD1B32239951000CAD6C8 /* Blogger.swift in Sources */,
 				096BD1AC2239940200CAD6C8 /* DBService.swift in Sources */,
 				096BD1B12239950300CAD6C8 /* Blog.swift in Sources */,
+				096461BF2240273F00665894 /* DetailViewController.swift in Sources */,
 				096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */,
 				096BD1B822399AD200CAD6C8 /* String+Date.swift in Sources */,
 				096461BB223FE2BC00665894 /* UIViewcontroller+extension.swift in Sources */,

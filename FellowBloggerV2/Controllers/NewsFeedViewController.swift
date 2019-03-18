@@ -39,9 +39,7 @@ class NewsFeedViewController: UIViewController {
         configureTableView()
         getBlogs()
     }
-
- 
-
+    
     
     @objc public func getBlogs() {
         refreshcontrol.beginRefreshing()
@@ -113,7 +111,16 @@ extension NewsFeedViewController: UITableViewDataSource {
               DBService.firestoreDB.collection(BlogsCollectionKeys.CreatedDateKey)
                 .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger.bloggerId)
                 cell.profilePhoto.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+                
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+       guard let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else  { return }
+        
+        pushControllers(controller: "DetailVC")
+    }
 }
+

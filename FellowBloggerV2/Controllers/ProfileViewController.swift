@@ -46,7 +46,6 @@ class ProfileViewController: UIViewController {
                     } else if let snapshot = snapshot {
                         self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
                     }
-                    
             }
         }
     }
@@ -95,6 +94,8 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: ProfileHeaderViewDelegate {
     func willSignOut(_ profileHeaderView: ProfileView) {
         authservice.signOutAccount()
+        showLoginView()
+        
     }
     
     func willEditProfile(_ profileHeaderView: ProfileView) {
