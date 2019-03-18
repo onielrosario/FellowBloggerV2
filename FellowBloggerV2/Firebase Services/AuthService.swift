@@ -81,6 +81,10 @@ final class AuthService {
     }
     
     public func signOutAccount() {
+        guard let _ = getCurrentUser() else {
+            print("no logged user")
+            return
+        }
         do {
            try Auth.auth().signOut()
             authserviceSignoutAccountDelegate?.didSignOut(self)

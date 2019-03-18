@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! 
     private lazy var profileViewHeader: ProfileView = {
         let headerView = ProfileView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         return headerView

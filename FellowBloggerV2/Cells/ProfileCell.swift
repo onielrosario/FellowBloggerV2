@@ -13,3 +13,4 @@ class ProfileCell: UITableViewCell {
     @IBOutlet weak var blogDescription: UITextView!
     @IBOutlet weak var blogImage: UIImageView!
 }
+

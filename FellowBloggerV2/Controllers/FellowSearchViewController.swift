@@ -9,22 +9,29 @@
 import UIKit
 
 class FellowSearchViewController: UIViewController {
-
+    private var searchFellowsVC: SearchFellowResultController = {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let fellowSearchResultsVC = storyboard.instantiateViewController(withIdentifier: "fellowSearchedVC") as! SearchFellowResultController
+        return fellowSearchResultsVC
+    }()
+    private lazy var searchBarController: UISearchController = {
+        let sc = UISearchController(searchResultsController: searchFellowsVC)
+        sc.searchResultsUpdater =  searchFellowsVC
+        sc.hidesNavigationBarDuringPresentation = false
+        sc.searchBar.placeholder = "Search for fellows"
+        sc.dimsBackgroundDuringPresentation = false
+        sc.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        sc.searchBar.autocapitalizationType = .none
+        return sc
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.searchController = searchBarController
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

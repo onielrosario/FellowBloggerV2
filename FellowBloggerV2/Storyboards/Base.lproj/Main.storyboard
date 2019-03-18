@@ -26,21 +26,147 @@
             </objects>
             <point key="canvasLocation" x="828" y="46.326836581709152"/>
         </scene>
-        <!--Feed-->
+        <!--Search Fellow Result Controller-->
+        <scene sceneID="1DC-9T-n6M">
+            <objects>
+                <viewController storyboardIdentifier="fellowSearchedVC" id="HTc-IG-fEA" customClass="SearchFellowResultController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="08K-zm-Fws">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2WS-RJ-EPO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fellowSearchCell" textLabel="Ifd-Xx-Fvq" detailTextLabel="ogx-bJ-4Lv" style="IBUITableViewCellStyleSubtitle" id="uHw-ae-7TK">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uHw-ae-7TK" id="aWB-5b-smq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ifd-Xx-Fvq">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogx-bJ-4Lv">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="h46-Ll-8jM" firstAttribute="bottom" secondItem="2WS-RJ-EPO" secondAttribute="bottom" id="3Ya-5m-yI5"/>
+                            <constraint firstItem="h46-Ll-8jM" firstAttribute="trailing" secondItem="2WS-RJ-EPO" secondAttribute="trailing" id="6rm-fy-Bup"/>
+                            <constraint firstItem="2WS-RJ-EPO" firstAttribute="top" secondItem="h46-Ll-8jM" secondAttribute="top" id="PUB-8k-rP5"/>
+                            <constraint firstItem="2WS-RJ-EPO" firstAttribute="leading" secondItem="h46-Ll-8jM" secondAttribute="leading" id="zqd-7u-ZXi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h46-Ll-8jM"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2WS-RJ-EPO" id="RmU-BA-HYT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAS-og-BRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1606" y="49"/>
+        </scene>
+        <!--Fellow Feed-->
         <scene sceneID="2fF-S7-P7G">
             <objects>
                 <viewController storyboardIdentifier="NewsFeedVC" id="hnA-Ky-Cgo" customClass="NewsFeedViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z02-60-dzZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1nO-eF-gbY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedCell" rowHeight="453" id="N2v-rQ-Xhs" customClass="FeedCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="453"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N2v-rQ-Xhs" id="p5j-lr-ZmR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="452.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-Wp-MkH" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                                                    <rect key="frame" x="23" y="19" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="4Cs-Ih-4k7"/>
+                                                        <constraint firstAttribute="width" secondItem="dj8-Wp-MkH" secondAttribute="height" multiplier="1:1" id="vgH-HP-xaP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tealCover" translatesAutoresizingMaskIntoConstraints="NO" id="a9A-Wt-tkH">
+                                                    <rect key="frame" x="0.0" y="109" width="375" height="211"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="a9A-Wt-tkH" secondAttribute="height" multiplier="16:9" id="CEF-df-NXT"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Blog description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="agH-KF-agj">
+                                                    <rect key="frame" x="0.0" y="320" width="375" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="c37-p1-sfn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a9A-Wt-tkH" firstAttribute="width" secondItem="p5j-lr-ZmR" secondAttribute="width" id="E9S-gB-9OY"/>
+                                                <constraint firstItem="agH-KF-agj" firstAttribute="width" secondItem="a9A-Wt-tkH" secondAttribute="width" id="GI7-Gp-WHD"/>
+                                                <constraint firstItem="agH-KF-agj" firstAttribute="centerX" secondItem="a9A-Wt-tkH" secondAttribute="centerX" id="HXp-MZ-YTN"/>
+                                                <constraint firstItem="dj8-Wp-MkH" firstAttribute="top" secondItem="p5j-lr-ZmR" secondAttribute="topMargin" constant="8" id="ToJ-ga-S6a"/>
+                                                <constraint firstItem="a9A-Wt-tkH" firstAttribute="centerX" secondItem="p5j-lr-ZmR" secondAttribute="centerX" id="a22-kp-wbI"/>
+                                                <constraint firstItem="a9A-Wt-tkH" firstAttribute="top" secondItem="dj8-Wp-MkH" secondAttribute="bottom" constant="10" id="bdi-eI-CSQ"/>
+                                                <constraint firstItem="dj8-Wp-MkH" firstAttribute="leading" secondItem="p5j-lr-ZmR" secondAttribute="leadingMargin" constant="8" id="r0d-re-bJE"/>
+                                                <constraint firstItem="agH-KF-agj" firstAttribute="top" secondItem="a9A-Wt-tkH" secondAttribute="bottom" id="yLM-uG-yFp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedDescription" destination="p5j-lr-ZmR" id="dot-pQ-G29"/>
+                                            <outlet property="feedPhoto" destination="a9A-Wt-tkH" id="pcX-6o-Tkx"/>
+                                            <outlet property="profilePhoto" destination="dj8-Wp-MkH" id="mb7-g3-3Qi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.28333655330000002" green="0.4279294481" blue="0.4480184968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Lq3-2x-oDR" firstAttribute="bottom" secondItem="1nO-eF-gbY" secondAttribute="bottom" id="O5d-UE-H73"/>
+                            <constraint firstItem="1nO-eF-gbY" firstAttribute="top" secondItem="Lq3-2x-oDR" secondAttribute="top" id="QQY-ew-ERc"/>
+                            <constraint firstItem="1nO-eF-gbY" firstAttribute="leading" secondItem="Lq3-2x-oDR" secondAttribute="leading" id="bJh-pg-0Gg"/>
+                            <constraint firstItem="Lq3-2x-oDR" firstAttribute="trailing" secondItem="1nO-eF-gbY" secondAttribute="trailing" id="vQa-A5-bBA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Lq3-2x-oDR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="News" selectedImage="NewsFilled" id="zlq-fh-Bw6"/>
+                    <navigationItem key="navigationItem" title="Fellow Feed" id="zAe-jr-AhL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Goy-aG-cX3">
+                            <connections>
+                                <action selector="addBlog:" destination="hnA-Ky-Cgo" id="ZDk-fE-1VQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="1nO-eF-gbY" id="3b8-aV-hVj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgX-QF-MoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-609.44527736131943"/>
+            <point key="canvasLocation" x="1767.2" y="-609.44527736131943"/>
         </scene>
         <!--Main Tab Controller-->
         <scene sceneID="62c-9X-2nA">
@@ -52,7 +178,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hnA-Ky-Cgo" kind="relationship" relationship="viewControllers" id="MIi-bl-S44"/>
+                        <segue destination="rxJ-5i-Ged" kind="relationship" relationship="viewControllers" id="MIi-bl-S44"/>
                         <segue destination="YMT-kr-h2h" kind="relationship" relationship="viewControllers" id="cQZ-vV-OZg"/>
                         <segue destination="FZX-nf-lRD" kind="relationship" relationship="viewControllers" id="6dm-rI-85Y"/>
                     </connections>
@@ -342,6 +468,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYM-Px-CJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3477.5999999999999" y="757.87106446776613"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="WJW-Vf-trg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rxJ-5i-Ged" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="News" selectedImage="NewsFilled" id="zlq-fh-Bw6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="580-h9-hGR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hnA-Ky-Cgo" kind="relationship" relationship="rootViewController" id="AsF-20-acs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="odb-cO-pJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-609.44527736131943"/>
         </scene>
     </scenes>
     <resources>

@@ -14,6 +14,8 @@
 		090BDECD223C101A0088465A /* EditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDECC223C101A0088465A /* EditCell.swift */; };
 		090BDECF223C2DA20088465A /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDECE223C2DA20088465A /* BioCell.swift */; };
 		090BDED1223C33E30088465A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED0223C33E30088465A /* EditBioViewController.swift */; };
+		090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED2223C3FA70088465A /* SearchFellowResultController.swift */; };
+		096461B7223F15C800665894 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B6223F15C800665894 /* FeedCell.swift */; };
 		096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1942239862700CAD6C8 /* AppDelegate.swift */; };
 		096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ProfileViewController.swift */; };
 		096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD1982239862700CAD6C8 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		090BDECC223C101A0088465A /* EditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCell.swift; sourceTree = "<group>"; };
 		090BDECE223C2DA20088465A /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
 		090BDED0223C33E30088465A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
+		090BDED2223C3FA70088465A /* SearchFellowResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFellowResultController.swift; sourceTree = "<group>"; };
+		096461B6223F15C800665894 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		096BD1912239862700CAD6C8 /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096BD1942239862700CAD6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096BD1962239862700CAD6C8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				090BDEC8223BEDD00088465A /* ProfileCell.xib */,
 				090BDECC223C101A0088465A /* EditCell.swift */,
 				090BDECE223C2DA20088465A /* BioCell.swift */,
+				096461B6223F15C800665894 /* FeedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				09F4F817223AD35100FDA7C0 /* MainTabController.swift */,
 				090BDECA223C08570088465A /* EditViewController.swift */,
 				090BDED0223C33E30088465A /* EditBioViewController.swift */,
+				090BDED2223C3FA70088465A /* SearchFellowResultController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -415,7 +421,9 @@
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,
 				090BDEC1223B62D80088465A /* UIImageView+Curves.swift in Sources */,
 				090BDEC7223BED920088465A /* ProfileCell.swift in Sources */,
+				090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */,
 				09F4F80F223AC51F00FDA7C0 /* LoginViewController.swift in Sources */,
+				096461B7223F15C800665894 /* FeedCell.swift in Sources */,
 				090BDECD223C101A0088465A /* EditCell.swift in Sources */,
 				09F4F81A223AF1EB00FDA7C0 /* UIViewController+Alerts.swift in Sources */,
 				09F4F815223AD2A500FDA7C0 /* NewsFeedViewController.swift in Sources */,

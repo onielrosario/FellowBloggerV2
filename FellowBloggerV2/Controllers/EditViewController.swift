@@ -12,7 +12,7 @@ class EditViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editProfileButton: CircularButton!
     @IBOutlet weak var editCoverImage: UIImageView!
-    private var editLabels: [String] = ["First Name","Last Name","Username","Bio"]
+    private var editLabels: [String] = ["First Name","Last Name","Username", "Edit Bio"]
    var tap: UITapGestureRecognizer!
     
     override func viewDidLoad() {
@@ -53,8 +53,8 @@ extension EditViewController: UITableViewDataSource {
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BioCell", for: indexPath) as? BioCell else { return UITableViewCell() }
             tap = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
-            
-            
+           let editLabel = editLabels[indexPath.row]
+            cell.bioCellLabel.text = editLabel
             cell.bioTextField.addGestureRecognizer(tap)
             
             
