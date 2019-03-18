@@ -20,9 +20,15 @@ class NewsFeedViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func pushControllers(controller: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
  
     @IBAction func addBlog(_ sender: UIBarButtonItem) {
-        
+        pushControllers(controller: "AddBlogVC")
     }
 }
 

@@ -16,6 +16,7 @@
 		090BDED1223C33E30088465A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED0223C33E30088465A /* EditBioViewController.swift */; };
 		090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED2223C3FA70088465A /* SearchFellowResultController.swift */; };
 		096461B7223F15C800665894 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B6223F15C800665894 /* FeedCell.swift */; };
+		096461B9223F28FB00665894 /* AddBloggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B8223F28FB00665894 /* AddBloggViewController.swift */; };
 		096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1942239862700CAD6C8 /* AppDelegate.swift */; };
 		096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD1962239862700CAD6C8 /* ProfileViewController.swift */; };
 		096BD19A2239862700CAD6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096BD1982239862700CAD6C8 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		090BDED0223C33E30088465A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		090BDED2223C3FA70088465A /* SearchFellowResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFellowResultController.swift; sourceTree = "<group>"; };
 		096461B6223F15C800665894 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		096461B8223F28FB00665894 /* AddBloggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBloggViewController.swift; sourceTree = "<group>"; };
 		096BD1912239862700CAD6C8 /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096BD1942239862700CAD6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096BD1962239862700CAD6C8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		09F4F80D223AC50C00FDA7C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				096461B8223F28FB00665894 /* AddBloggViewController.swift */,
 				09F4F80E223AC51F00FDA7C0 /* LoginViewController.swift */,
 				096BD1962239862700CAD6C8 /* ProfileViewController.swift */,
 				09F4F812223AD29600FDA7C0 /* FellowSearchViewController.swift */,
@@ -420,6 +423,7 @@
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,
 				090BDEC1223B62D80088465A /* UIImageView+Curves.swift in Sources */,
+				096461B9223F28FB00665894 /* AddBloggViewController.swift in Sources */,
 				090BDEC7223BED920088465A /* ProfileCell.swift in Sources */,
 				090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */,
 				09F4F80F223AC51F00FDA7C0 /* LoginViewController.swift in Sources */,
