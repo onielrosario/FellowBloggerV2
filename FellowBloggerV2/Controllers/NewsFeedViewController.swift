@@ -78,6 +78,19 @@ class NewsFeedViewController: UIViewController {
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail segue" {
+            guard let indexPath = sender as? IndexPath,
+            let cell = tableView.cellForRow(at: indexPath) as? FeedCell,
+                let navController = segue.destination as? UINavigationController,
+            let detailViewController = navController.viewControllers.first as? DetailViewController else {
+                    fatalError("cannot segue to detail")
+            }
+        let blog = blogs[indexPath.row]
+        detailViewController.blog = blog
+    }
+    }
+    
     @IBAction func addBlog(_ sender: UIBarButtonItem) {
         pushControllers(controller: "AddBlogVC")
     }
@@ -117,10 +130,7 @@ extension NewsFeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-       guard let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else  { return }
-        
-        pushControllers(controller: "DetailVC")
+   performSegue(withIdentifier: "detail segue", sender: indexPath)
     }
 }
 
