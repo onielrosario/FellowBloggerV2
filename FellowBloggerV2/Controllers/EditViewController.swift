@@ -7,23 +7,64 @@
 //
 
 import UIKit
+import Firebase
+import Toucan
+
+enum ProfilePhotos {
+    case profileImage
+    case coverImage
+}
 
 class EditViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editProfileButton: CircularButton!
     @IBOutlet weak var editCoverImage: UIImageView!
+    private var coverTap: UITapGestureRecognizer!
+    public var editTextFields = [String]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    private lazy var imagePicker: UIImagePickerController = {
+       let ip = UIImagePickerController()
+        ip.delegate = self
+        return ip
+    }()
+    private var editProfilePhoto: ProfilePhotos?
     private var editLabels: [String] = ["First Name","Last Name","Username", "Edit Bio"]
    var tap: UITapGestureRecognizer!
-    
+    var bio = "" {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    private var authservice = AppDelegate.authService
     override func viewDidLoad() {
         super.viewDidLoad()
     configureTableview()
+        updateUI()
+    }
+    
+    private func  updateUI() {
+        coverTap = UITapGestureRecognizer(target: self, action: #selector(coverPhotoTapped))
+       self.editCoverImage.isUserInteractionEnabled = true
+        editCoverImage.addGestureRecognizer(coverTap)
     }
     private func configureTableview() {
         tableView.dataSource = self
         tableView.delegate = self
          tableView.tableFooterView = UIView()
-        
+    }
+    
+    @IBAction func profilePhotoPressed(_ sender: CircularButton) {
+        editProfilePhoto = ProfilePhotos.profileImage
+        presentImagePicker()
+    }
+    
+    
+    @objc private func coverPhotoTapped() {
+        self.editProfilePhoto = ProfilePhotos.coverImage
+        presentImagePicker()
     }
     
     private func pushControllers(controller: String) {
@@ -33,7 +74,54 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
-navigationController?.popViewController(animated: true)
+        guard !editTextFields.isEmpty,
+            let user = authservice.getCurrentUser(),
+       let imageData = editProfileButton.currentImage?.jpegData(compressionQuality: 1.0),
+       let coverImageData = editCoverImage.image?.jpegData(compressionQuality: 1.0),
+        !bio.isEmpty else  {
+            return
+        }
+        StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(user.uid)") { [weak self] (error, imageURL) in
+            StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(user.uid)") { [weak self](error, coverURL) in
+                let request = user.createProfileChangeRequest()
+                request.photoURL = imageURL
+                request.displayName = self!.editTextFields[2]
+                request.commitChanges(completion: { (error) in
+                    if let error = error {
+                        self?.showAlert(title: "error", message: error.localizedDescription, actionTitle: "OK")
+                    }
+                })
+                DBService.firestoreDB
+                .collection(BloggersCollectionKeys.CollectionKey)
+                .document(user.uid)
+                    .updateData([BloggersCollectionKeys.DisplayNameKey : self?.editTextFields[2] ?? "",
+                                 BloggersCollectionKeys.CoverImageURLKey: coverURL?.absoluteString ?? "",
+                                 BloggersCollectionKeys.PhotoURLKey: imageURL?.absoluteString ?? "",
+                                 BloggersCollectionKeys.FirstNameKey: self?.editTextFields[0] ?? "",
+                                 BloggersCollectionKeys.LastNameKey: self?.editTextFields[1] ?? "",
+                                 BloggersCollectionKeys.BioKey: self?.bio ?? ""
+                        ], completion: { (error) in
+                            if let error = error {
+                                self?.showAlert(title: "error saving account info", message: error.localizedDescription, actionTitle: "try again")
+                            }
+                    })
+                
+            }
+        }
+    
+        performSegue(withIdentifier: "from edit to profile VC", sender: self)
+    }
+    
+    private func presentImagePicker() {
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+          imagePicker.sourceType = .photoLibrary
+        }
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBAction func unwindFromEditBioVontroller(segue: UIStoryboardSegue) {
+        let editBioVC = segue.source as! EditBioViewController
+        self.bio = editBioVC.editBioTextView.text
     }
     
     
@@ -56,9 +144,7 @@ extension EditViewController: UITableViewDataSource {
            let editLabel = editLabels[indexPath.row]
             cell.bioCellLabel.text = editLabel
             cell.bioTextField.addGestureRecognizer(tap)
-            
-            
-            
+            cell.bioTextField.text = bio
             return cell
         default:
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditCell", for: indexPath) as? EditCell else {
@@ -66,6 +152,7 @@ extension EditViewController: UITableViewDataSource {
         }
         let labelTitle = editLabels[indexPath.row]
         cell.editLabel.text = labelTitle
+        cell.editTextField.delegate = self
         return cell
         }
     }
@@ -86,5 +173,47 @@ extension EditViewController: UITableViewDelegate {
         } else {
             return 50
         }
+    }
+}
+
+extension EditViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+         editTextFields.append(text)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            guard !text.isEmpty else {
+                return false
+            }
+        }
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension EditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage  else {
+        print("original image not available")
+            return
+        }
+        let size = CGSize(width: 500, height: 350)
+        let resizedImage = Toucan.Resize.resizeImage(originalImage, size: size)
+        if editProfilePhoto == .coverImage {
+           self.editCoverImage.image = resizedImage
+        } else {
+           self.editProfileButton.setImage(resizedImage, for: .normal)
+        }
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }

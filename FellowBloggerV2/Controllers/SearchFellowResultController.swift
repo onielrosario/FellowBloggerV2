@@ -15,6 +15,7 @@ class SearchFellowResultController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 
 }
 

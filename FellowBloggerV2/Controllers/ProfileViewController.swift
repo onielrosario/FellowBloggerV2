@@ -45,7 +45,12 @@ class ProfileViewController: UIViewController {
                         print("failed to get blogs with error: \(error.localizedDescription)")
                     } else if let snapshot = snapshot {
                         self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
+                      
                     }
+            }
+            self.user = user
+            if let imageUrl = user.photoURL {
+                  self.profileViewHeader.profileImage.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
             }
         }
     }
@@ -61,6 +66,15 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
         navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue) {
+    let editVC = segue.source as! EditViewController
+      profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
+     profileViewHeader.coverImage.image = editVC.editCoverImage.image
+    profileViewHeader.fullNameLabel.text = "\(editVC.editTextFields[0]) \(editVC.editTextFields[1])"
+        profileViewHeader.bloggerName.text = "@\(editVC.editTextFields[2])"
+        profileViewHeader.bioText.text = editVC.bio
     }
 }
 
