@@ -18,8 +18,8 @@ class SearchFellowResultController: UIViewController {
             }
         }
     }
-    
-
+    private var authservice = AppDelegate.authService
+    private var listener: ListenerRegistration!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearch()
@@ -37,13 +37,22 @@ class SearchFellowResultController: UIViewController {
                 }
         }
     }
-
+    
+    private func filterFellows(text: String) -> [Blogger] {
+        var newBloggers = [Blogger]()
+        for blogger in bloggers {
+            if (blogger.firstName?.contains(text))! || (blogger.lastName?.contains(text))! || blogger.displayName.contains(text) {
+                newBloggers.append(blogger)
+            }
+        }
+        return newBloggers
+    }
+    
     
     private func  configureTableview() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        
     }
     private func configureSearch() {
         
@@ -67,16 +76,18 @@ extension SearchFellowResultController: UITableViewDataSource {
         let blogger = bloggers[indexPath.row]
         cell.textLabel?.text = blogger.displayName
         cell.detailTextLabel?.text = blogger.fullName
-        
+        configureCellImage(cell: cell, blogger: blogger)
         return cell
     }
     
-    private func configureCellImage(cell: UITableViewCell) {
+    private func configureCellImage(cell: UITableViewCell, blogger: Blogger) {
         cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.layer.cornerRadius = cell.bounds.width / 2.0
+        cell.imageView?.layer.cornerRadius = (cell.imageView?.bounds.width)! / 2.0
         cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         cell.imageView?.layer.borderWidth = 0.5
         cell.imageView?.clipsToBounds = true
+        //        let user = authservice.getCurrentUser()
+        cell.imageView?.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
     }
     
     
@@ -84,8 +95,12 @@ extension SearchFellowResultController: UITableViewDataSource {
 
 extension SearchFellowResultController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+       guard let fellowsSearched = searchController.searchBar.text,
+        !fellowsSearched.isEmpty else {
+            getBloggers()
+            return
+        }
+       self.bloggers = filterFellows(text: fellowsSearched)
     }
-    
-    
 }
+
