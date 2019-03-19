@@ -4,7 +4,7 @@
 //
 //  Created by Wei Wang on 2018/10/15.
 //
-//  Copyright (c) 2018年 Wei Wang <onevcat@gmail.com>
+//  Copyright (c) 2019 Wei Wang <onevcat@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ public enum DiskStorage {
         public var config: Config
 
         // The final storage URL on disk, with `name` and `cachePathBlock` considered.
-        let directoryURL: URL
+        public let directoryURL: URL
 
         let metaChangingQueue: DispatchQueue
 

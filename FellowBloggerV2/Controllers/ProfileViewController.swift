@@ -45,12 +45,19 @@ class ProfileViewController: UIViewController {
                         print("failed to get blogs with error: \(error.localizedDescription)")
                     } else if let snapshot = snapshot {
                         self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
-                      
                     }
             }
             self.user = user
-            if let imageUrl = user.photoURL {
-                  self.profileViewHeader.profileImage.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+            DBService.getBlogger(userId: user.uid) { (error, blogger) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let blogger = blogger {
+                    self.profileViewHeader.profileImage.kf.setImage(with: URL(string: user.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
+                    self.profileViewHeader.bioText.text = blogger.bio
+                    self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
+                    self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
+                    self.profileViewHeader.coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg") )
+                }
             }
         }
     }

@@ -65,7 +65,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="BIO!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ibu-rX-gc3">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="BIO!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ibu-rX-gc3">
                     <rect key="frame" x="8" y="361" width="380" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
