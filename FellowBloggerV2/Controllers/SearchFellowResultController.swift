@@ -41,7 +41,7 @@ class SearchFellowResultController: UIViewController {
     private func filterFellows(text: String) -> [Blogger] {
         var newBloggers = [Blogger]()
         for blogger in bloggers {
-            if (blogger.firstName?.contains(text))! || (blogger.lastName?.contains(text))! || blogger.displayName.contains(text) {
+            if (blogger.firstName?.lowercased().contains(text))! || (blogger.lastName?.lowercased().contains(text))! || blogger.displayName.lowercased().contains(text) {
                 newBloggers.append(blogger)
             }
         }
@@ -86,7 +86,6 @@ extension SearchFellowResultController: UITableViewDataSource {
         cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         cell.imageView?.layer.borderWidth = 0.5
         cell.imageView?.clipsToBounds = true
-        //        let user = authservice.getCurrentUser()
         cell.imageView?.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
     }
     
@@ -95,7 +94,7 @@ extension SearchFellowResultController: UITableViewDataSource {
 
 extension SearchFellowResultController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-       guard let fellowsSearched = searchController.searchBar.text,
+       guard let fellowsSearched = searchController.searchBar.text?.lowercased(),
         !fellowsSearched.isEmpty else {
             getBloggers()
             return
