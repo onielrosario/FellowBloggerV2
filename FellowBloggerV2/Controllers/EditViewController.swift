@@ -110,7 +110,6 @@ class EditViewController: UIViewController {
                             if let error = error {
                                 self?.showAlert(title: "error saving account info", message: error.localizedDescription, actionTitle: "try again")
                             }
-//                             self?.showAlert(title: "success", message: "you profile has been updated", actionTitle: "OK")
                     })
             }
             

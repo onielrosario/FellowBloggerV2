@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAS-og-BRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="160"/>
+            <point key="canvasLocation" x="1745" y="83"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="C9g-nf-AWL">
@@ -152,6 +152,7 @@
                         <outlet property="bloggerName" destination="CjT-Ib-XYf" id="XpA-up-hBD"/>
                         <outlet property="bloggerimage" destination="wFu-3J-Osi" id="JOD-1T-f7b"/>
                         <outlet property="detailBlogImage" destination="wsn-oY-UoQ" id="RTg-c9-xgV"/>
+                        <segue destination="HVM-GR-0NZ" kind="presentation" identifier="show blog Detail vc" id="CeF-K1-fMy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEe-M1-KmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="1644" y="-609"/>
         </scene>
-        <!--Add Blogg View Controller-->
+        <!--Edit Blogg View Controller-->
         <scene sceneID="Fp7-10-Vn3">
             <objects>
-                <viewController storyboardIdentifier="AddBlogVC" id="EMB-5k-Dlc" customClass="AddBloggViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBlogVC" id="EMB-5k-Dlc" customClass="EditBloggViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IWD-4W-6AZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,9 +296,11 @@
                     <connections>
                         <outlet property="blogDescription" destination="2Hd-QV-gKW" id="wNw-uq-qaG"/>
                         <outlet property="newBlogImage" destination="dIT-gB-THz" id="mY9-gl-pIa"/>
+                        <segue destination="TMw-d1-8LR" kind="unwind" identifier="unwind from edit" unwindAction="unwindFromEditViewControllerWithSegue:" id="2c0-CE-osk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKO-VG-XhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TMw-d1-8LR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3408.8000000000002" y="-609.44527736131943"/>
         </scene>
@@ -640,6 +643,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Cbk-y6-tqX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzw-db-P6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HVM-GR-0NZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mQP-ot-uRt">
@@ -651,9 +655,8 @@
                         <segue destination="EMB-5k-Dlc" kind="relationship" relationship="rootViewController" id="uh7-bI-2gZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzw-db-P6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469.5999999999999" y="-609.44527736131943"/>
+            <point key="canvasLocation" x="2593" y="-720"/>
         </scene>
     </scenes>
     <resources>

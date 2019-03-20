@@ -37,4 +37,13 @@ extension UIViewController {
         alertController.addAction(customAction)
         present(alertController, animated: true)
     }
+    
+    public func confirmDeletionActionSheet(handler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: "Are you sure?", message: "Deleting this activity will erase it permanently", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handler)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
+    }
 }

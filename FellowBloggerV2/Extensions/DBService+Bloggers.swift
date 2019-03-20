@@ -23,4 +23,18 @@ extension DBService {
                 }
         }
     }
+    
+    
+    static public func deleteBlog(blog: Blog, completion: @escaping(Error?) -> Void) {
+        DBService.firestoreDB
+        .collection(BlogsCollectionKeys.CollectionKey)
+        .document(blog.documentId)
+            .delete { (error) in
+                if let error = error {
+                    completion(error)
+                } else {
+                    completion(nil)
+                }
+        }
+    }
 }

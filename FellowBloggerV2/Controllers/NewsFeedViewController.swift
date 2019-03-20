@@ -125,9 +125,6 @@ extension NewsFeedViewController: UITableViewDataSource {
             }
         }
     }
-    
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //   performSegue(withIdentifier: "detail segue", sender: indexPath)
-    //    }
+  
 }
 
