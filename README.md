@@ -14,7 +14,7 @@
 - [x] user can create a blog post: post includes adding a photo from camera or photo library 
 - [ ] user can edit their blog post 
 - [ ] user can delete a blog post
-- [ ] selecting a blog post shows a detail view of the blog 
+- [x] selecting a blog post shows a detail view of the blog 
 - [ ] user can see more options via an action sheet to carry out the appropriate action e.g delete, edit, save image
 - [x] user can search for other bloggers in the search tab 
 - [ ] selecting a blogger from the search takes the user to the blogger's profile page
