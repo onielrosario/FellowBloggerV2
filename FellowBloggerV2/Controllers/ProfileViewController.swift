@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     }()
     private let authservice = AppDelegate.authService
     private var user: User!
+    var blogger: Blogger!
     private var listener: ListenerRegistration!
     private var blogs = [Blog]() {
         didSet {
@@ -36,27 +37,53 @@ class ProfileViewController: UIViewController {
     
     
     public func getBlogs() {
-        if let user = self.authservice.getCurrentUser() {
-            listener = DBService.firestoreDB
-                .collection(BlogsCollectionKeys.CollectionKey)
-                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.uid)
-                .addSnapshotListener { [weak self] (snapshot, error) in
-                    if let error = error {
-                        print("failed to get blogs with error: \(error.localizedDescription)")
-                    } else if let snapshot = snapshot {
-                        self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
-                    }
-            }
-            self.user = user
-            DBService.getBlogger(userId: user.uid) { (error, blogger) in
+        if blogger != nil {
+            self.profileViewHeader.editButton.isHidden = true
+            self.profileViewHeader.signOutButton.isHidden = true
+            DBService.getBlogger(userId: blogger.bloggerId) { (error, blogger) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let blogger = blogger {
-                    self.profileViewHeader.profileImage.kf.setImage(with: URL(string: user.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
+                    self.profileViewHeader.profileImage.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
                     self.profileViewHeader.bioText.text = blogger.bio
                     self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
                     self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
                     self.profileViewHeader.coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg") )
+                }
+            }
+            listener = DBService.firestoreDB.collection(BlogsCollectionKeys.CollectionKey)
+                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger.bloggerId)
+                .addSnapshotListener { (snapshot, error) in
+                    if let error = error {
+                        print("failed to get blogs with error: \(error.localizedDescription)")
+                    } else if let snapshot = snapshot {
+                        self.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
+                    }
+                }
+            
+        } else  {
+            if let user = self.authservice.getCurrentUser() {
+                listener = DBService.firestoreDB
+                    .collection(BlogsCollectionKeys.CollectionKey)
+                    .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: user.uid)
+                    .addSnapshotListener { [weak self] (snapshot, error) in
+                        if let error = error {
+                            print("failed to get blogs with error: \(error.localizedDescription)")
+                        } else if let snapshot = snapshot {
+                            self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
+                        }
+                }
+                self.user = user
+                DBService.getBlogger(userId: user.uid) { (error, blogger) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else if let blogger = blogger {
+                        self.profileViewHeader.profileImage.kf.setImage(with: URL(string: user.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
+                        self.profileViewHeader.bioText.text = blogger.bio
+                        self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
+                        self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
+                        self.profileViewHeader.coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg") )
+                    }
                 }
             }
         }
@@ -106,7 +133,9 @@ extension ProfileViewController: UITableViewDataSource {
         cell.blogDescription.text = blog.blogDescription
         cell.blogImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
         user = authservice.getCurrentUser()
-        if let userPhoto = user.photoURL?.absoluteString {
+        if blogger != nil {
+            cell.profileImage.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+        } else if let userPhoto = user.photoURL?.absoluteString {
              cell.profileImage.kf.setImage(with: URL(string: userPhoto), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
         }
         return cell

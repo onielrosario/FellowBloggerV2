@@ -22,7 +22,6 @@ class SearchFellowResultController: UIViewController {
     private var listener: ListenerRegistration!
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearch()
         configureTableview()
         getBloggers()
     }
@@ -54,10 +53,6 @@ class SearchFellowResultController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
-    private func configureSearch() {
-        
-    }
-    
 }
 
 extension SearchFellowResultController: UITableViewDelegate {
@@ -78,6 +73,16 @@ extension SearchFellowResultController: UITableViewDataSource {
         cell.detailTextLabel?.text = blogger.fullName
         configureCellImage(cell: cell, blogger: blogger)
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileViewController
+        let blogger = bloggers[indexPath.row]
+        profileVC.blogger = blogger
+        navigationController?.pushViewController(profileVC, animated: true)
+//    self.present(profileVC, animated: true)
     }
     
     private func configureCellImage(cell: UITableViewCell, blogger: Blogger) {

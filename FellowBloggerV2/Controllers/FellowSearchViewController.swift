@@ -15,7 +15,7 @@ class FellowSearchViewController: UIViewController {
         return fellowSearchResultsVC
     }()
     private lazy var searchBarController: UISearchController = {
-        let sc = UISearchController(searchResultsController: searchFellowsVC)
+        let sc = UISearchController(searchResultsController: UINavigationController.init(rootViewController: searchFellowsVC))
         sc.searchResultsUpdater =  searchFellowsVC
         sc.hidesNavigationBarDuringPresentation = false
         sc.searchBar.placeholder = "Search for fellows"
