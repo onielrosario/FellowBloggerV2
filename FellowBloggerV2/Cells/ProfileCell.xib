@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="633" id="O0f-Fk-uIA" customClass="ProfileCell" customModule="FellowBloggerV2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="704" height="633"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O0f-Fk-uIA" id="Oka-xc-4aa">
+                <rect key="frame" x="0.0" y="0.0" width="704" height="632.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="vvm-73-ToG" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                        <rect key="frame" x="28" y="39" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="HBV-HU-EOP"/>
+                            <constraint firstAttribute="width" secondItem="vvm-73-ToG" secondAttribute="height" multiplier="1:1" id="R33-FW-eZW"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hP-ne-6mJ">
+                        <rect key="frame" x="28" y="147" width="664" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="0wx-cg-56A"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tealCover" translatesAutoresizingMaskIntoConstraints="NO" id="amR-Ja-79M">
+                        <rect key="frame" x="28" y="255" width="664" height="354"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="amR-Ja-79M" secondAttribute="height" multiplier="15:8" id="bQr-z1-DZo"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6hP-ne-6mJ" firstAttribute="trailing" secondItem="Oka-xc-4aa" secondAttribute="trailingMargin" constant="8" id="5Ae-Km-dZP"/>
+                    <constraint firstItem="6hP-ne-6mJ" firstAttribute="leading" secondItem="Oka-xc-4aa" secondAttribute="leadingMargin" constant="8" id="FEN-40-IRT"/>
+                    <constraint firstItem="vvm-73-ToG" firstAttribute="leading" secondItem="Oka-xc-4aa" secondAttribute="leadingMargin" constant="8" id="Y9g-jB-2sf"/>
+                    <constraint firstItem="6hP-ne-6mJ" firstAttribute="top" secondItem="vvm-73-ToG" secondAttribute="bottom" constant="8" id="hT8-iT-B46"/>
+                    <constraint firstItem="vvm-73-ToG" firstAttribute="top" secondItem="Oka-xc-4aa" secondAttribute="topMargin" constant="8" id="k0O-Vs-xte"/>
+                    <constraint firstItem="amR-Ja-79M" firstAttribute="top" secondItem="6hP-ne-6mJ" secondAttribute="bottom" constant="8" id="m8b-30-ZOO"/>
+                    <constraint firstItem="amR-Ja-79M" firstAttribute="width" secondItem="6hP-ne-6mJ" secondAttribute="width" id="uYx-2G-MWL"/>
+                    <constraint firstItem="amR-Ja-79M" firstAttribute="centerX" secondItem="6hP-ne-6mJ" secondAttribute="centerX" id="vIS-J2-iXk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="blogDescription" destination="6hP-ne-6mJ" id="uBt-z2-7YL"/>
+                <outlet property="blogImage" destination="amR-Ja-79M" id="H3y-wq-aoo"/>
+                <outlet property="profileImage" destination="vvm-73-ToG" id="Agh-DO-ECw"/>
+            </connections>
+            <point key="canvasLocation" x="180.80000000000001" y="73.313343328335833"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProfilePH" width="256" height="256"/>
+        <image name="tealCover" width="1280" height="720"/>
+    </resources>
+</document>
