@@ -28,7 +28,6 @@ class EditBloggViewController: UIViewController {
             blogDescription.text = editblogDescription
             newBlogImage.image = editImage
             title = "Edit Blog"
-//            configureKeyBoard()
         } else {
             title = "New Blog"
     blogDescription.clipsToBounds = true
@@ -115,7 +114,7 @@ class EditBloggViewController: UIViewController {
                     let blog = Blog(createdDate: Date.getISOTimestamp(), bloggerId: user.uid, imageURL: imageURL.absoluteString, blogDescription: newBlogDescription, documentId: docRef.documentID)
                     DBService.postBlog(blog: blog)
                     self?.showAlert(title: "Success", message: "New blog Posted", style: .alert, handler: { (alert) in
-                        self?.dismiss(animated: true)
+                        self!.navigationController?.popViewController(animated: true)
                     })
                 }
             }

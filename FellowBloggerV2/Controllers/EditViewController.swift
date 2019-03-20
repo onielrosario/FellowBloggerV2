@@ -15,16 +15,30 @@ enum ProfilePhotos {
     case coverImage
 }
 
+enum CurrentProfileStatus {
+    case newAccount
+    case currentUser
+}
+
 class EditViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editProfileButton: CircularButton!
     @IBOutlet weak var editCoverImage: UIImageView!
     private var coverTap: UITapGestureRecognizer!
+    var user: Blogger!
+    private var bloggerProfileImage: CircularButton!
+    private var bloggerCoverImage: UIImageView!
+    private var bloggerInfo = [String]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     public var editTextFields = [String]() {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
     private lazy var imagePicker: UIImagePickerController = {
         let ip = UIImagePickerController()
         ip.delegate = self
@@ -41,9 +55,23 @@ class EditViewController: UIViewController {
     private var authservice = AppDelegate.authService
     override func viewDidLoad() {
         super.viewDidLoad()
+        if user != nil {
+          getMyInfo()
+               configureTableview()
+        } else {
         configureTableview()
         updateUI()
+        }
     }
+    
+    private func getMyInfo() {
+                self.bloggerInfo.append(user.firstName ?? "")
+                self.bloggerInfo.append(user.lastName ?? "")
+                self.bloggerInfo.append(user.displayName)
+                self.bloggerInfo.append(user.bio ?? "")
+                self.editProfileButton.kf.setImage(with: URL(string: user.photoURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
+                self.editCoverImage.kf.setImage(with: URL(string: user.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
+            }
     
     private func  updateUI() {
         coverTap = UITapGestureRecognizer(target: self, action: #selector(coverPhotoTapped))
@@ -86,7 +114,6 @@ class EditViewController: UIViewController {
        let firstName = editTextFields[0]
         let lastName = editTextFields[1]
         let userName = editTextFields[2]
-        
         StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(user.uid)") { [weak self] (error, imageURL) in
             StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(user.uid)") { [weak self](error, coverURL) in
                 let request = user.createProfileChangeRequest()
@@ -146,17 +173,33 @@ extension EditViewController: UITableViewDataSource {
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BioCell", for: indexPath) as? BioCell else { return UITableViewCell() }
             tap = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
-            let editLabel = editLabels[indexPath.row]
-            cell.bioCellLabel.text = editLabel
-            cell.bioTextField.addGestureRecognizer(tap)
-            cell.bioTextField.text = bio
+            if user != nil {
+                let editLabel = editLabels[indexPath.row]
+                cell.bioCellLabel.text = editLabel
+                let info = bloggerInfo[indexPath.row]
+                 cell.bioTextField.addGestureRecognizer(tap)
+                cell.bioTextField.text = info
+            } else {
+                let editLabel = editLabels[indexPath.row]
+                cell.bioCellLabel.text = editLabel
+                cell.bioTextField.addGestureRecognizer(tap)
+                cell.bioTextField.text = bio
+            }
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditCell", for: indexPath) as? EditCell else {
                 return UITableViewCell()
             }
+            if user != nil {
+                let info = bloggerInfo[indexPath.row]
+                cell.editTextField.text = info
+            }
             let labelTitle = editLabels[indexPath.row]
             cell.editLabel.text = labelTitle
+            if user != nil {
+                let info = bloggerInfo[indexPath.row]
+                cell.editTextField.text = info
+            }
             cell.editTextField.delegate = self
             return cell
         }
