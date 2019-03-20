@@ -38,6 +38,10 @@ class EditBloggViewController: UIViewController {
         }
     }
     
+    @IBAction func tapHandles(_ sender: UITapGestureRecognizer) {
+   blogDescription.resignFirstResponder()
+    }
+    
     
     
     private func configureKeyBoard() {

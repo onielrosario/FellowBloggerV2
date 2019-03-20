@@ -30,7 +30,10 @@ class FellowSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchBarController
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
 

@@ -28,8 +28,8 @@ class ProfileViewController: UIViewController {
         }
     }
     override func viewDidLoad() {
-        title = "Profile"
         super.viewDidLoad()
+          title = "Profile"
         configureTableView()
         profileViewHeader.delegate = self
         getBlogs()
@@ -38,6 +38,10 @@ class ProfileViewController: UIViewController {
     
     public func getBlogs() {
         if blogger != nil {
+             navigationController?.navigationBar.isHidden = false
+//               navigationController?.navigationBar.barTintColor = .white
+            title = blogger.displayName
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(CancelPressed))
             self.profileViewHeader.editButton.isHidden = true
             self.profileViewHeader.signOutButton.isHidden = true
             DBService.getBlogger(userId: blogger.bloggerId) { (error, blogger) in
@@ -87,6 +91,10 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc private func CancelPressed() {
+        self.dismiss(animated: true)
     }
     
     private func configureTableView() {

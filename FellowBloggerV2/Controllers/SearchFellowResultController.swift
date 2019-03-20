@@ -26,6 +26,14 @@ class SearchFellowResultController: UIViewController {
         getBloggers()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        print("peace")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getBloggers()
+    }
+    
     private func  getBloggers() {
         DBService.firestoreDB.collection(BloggersCollectionKeys.CollectionKey)
             .getDocuments { [weak self] (snapshot, error) in
@@ -82,7 +90,8 @@ extension SearchFellowResultController: UITableViewDataSource {
         let blogger = bloggers[indexPath.row]
         profileVC.blogger = blogger
         navigationController?.pushViewController(profileVC, animated: true)
-//    self.present(profileVC, animated: true)
+        getBloggers()
+        tableView.reloadData()
     }
     
     private func configureCellImage(cell: UITableViewCell, blogger: Blogger) {
@@ -128,5 +137,11 @@ extension SearchFellowResultController: UISearchBarDelegate {
             return
         }
         self.bloggers = filterFellows(text: text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.bloggers.removeAll()
+    getBloggers()
+        self.navigationController?.popToRootViewController(animated: false)
     }
 }
