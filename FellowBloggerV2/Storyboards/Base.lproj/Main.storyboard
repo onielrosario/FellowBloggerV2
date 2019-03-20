@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAS-og-BRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="49"/>
+            <point key="canvasLocation" x="1569" y="160"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="C9g-nf-AWL">
@@ -121,7 +121,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ebH-dT-fgZ">
-                                <rect key="frame" x="0.0" y="439" width="375" height="228"/>
+                                <rect key="frame" x="0.0" y="439" width="375" height="179"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEe-M1-KmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4357.6000000000004" y="60.719640179910051"/>
+            <point key="canvasLocation" x="2593" y="84"/>
         </scene>
         <!--Fellow Feed-->
         <scene sceneID="2fF-S7-P7G">
@@ -215,7 +215,7 @@
                                             <outlet property="feedDescription" destination="agH-KF-agj" id="Nn2-dJ-Qux"/>
                                             <outlet property="feedPhoto" destination="a9A-Wt-tkH" id="pcX-6o-Tkx"/>
                                             <outlet property="profilePhoto" destination="dj8-Wp-MkH" id="mb7-g3-3Qi"/>
-                                            <segue destination="Lo3-B9-AvB" kind="presentation" identifier="detail segue" id="gLr-Fo-Yg2"/>
+                                            <segue destination="y6v-SD-4ZL" kind="show" id="Lvr-5x-h3b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -654,24 +654,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uzw-db-P6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2469.5999999999999" y="-609.44527736131943"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FF3-f1-mZ6">
-            <objects>
-                <navigationController storyboardIdentifier="DetailNavController" automaticallyAdjustsScrollViewInsets="NO" id="Lo3-B9-AvB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cvq-JQ-mqj">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="y6v-SD-4ZL" kind="relationship" relationship="rootViewController" id="R8X-kL-Eha"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YIf-G3-WsZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3418.4000000000001" y="60.719640179910051"/>
         </scene>
     </scenes>
     <resources>

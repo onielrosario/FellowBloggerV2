@@ -56,7 +56,7 @@ class NewsFeedViewController: UIViewController {
                 }
         }
         listener = DBService.firestoreDB
-        .collection(BloggersCollectionKeys.CollectionKey)
+            .collection(BloggersCollectionKeys.CollectionKey)
             .addSnapshotListener { [weak self] (snapshot, error) in
                 if let error = error {
                     print("failed to get blogs with error: \(error.localizedDescription)")
@@ -64,7 +64,7 @@ class NewsFeedViewController: UIViewController {
                     self?.bloggers = snapshot.documents.map{ Blogger(dict: $0.data())}
                     
                 }
-            }
+        }
     }
     
     private func  configureTableView() {
@@ -79,16 +79,13 @@ class NewsFeedViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail segue" {
-            guard let indexPath = sender as? IndexPath,
-            let cell = tableView.cellForRow(at: indexPath) as? FeedCell,
-                let navController = segue.destination as? UINavigationController,
-            let detailViewController = navController.viewControllers.first as? DetailViewController else {
-                    fatalError("cannot segue to detail")
-            }
+        guard let cell = sender as? FeedCell,
+            let indexPath = tableView.indexPath(for: cell),
+            let detailViewController = segue.destination as? DetailViewController else {
+                fatalError("cannot segue to detail")
+        }
         let blog = blogs[indexPath.row]
         detailViewController.blog = blog
-    }
     }
     
     @IBAction func addBlog(_ sender: UIBarButtonItem) {
@@ -109,10 +106,10 @@ extension NewsFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as? FeedCell else { return UITableViewCell() }
-   let blog = blogs[indexPath.row]
+        let blog = blogs[indexPath.row]
         cell.feedDescription.text = blog.blogDescription
         cell.feedPhoto.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
-      fetchBlogCreatorPhoto(userid: blog.bloggerId, cell: cell, blog: blog)
+        fetchBlogCreatorPhoto(userid: blog.bloggerId, cell: cell, blog: blog)
         return cell
     }
     
@@ -121,16 +118,16 @@ extension NewsFeedViewController: UITableViewDataSource {
             if let error = error {
                 print("failed to get blogger with error: \(error.localizedDescription)")
             } else if let blogger = blogger {
-              DBService.firestoreDB.collection(BlogsCollectionKeys.CreatedDateKey)
-                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger.bloggerId)
+                DBService.firestoreDB.collection(BlogsCollectionKeys.CreatedDateKey)
+                    .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger.bloggerId)
                 cell.profilePhoto.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
                 
             }
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   performSegue(withIdentifier: "detail segue", sender: indexPath)
-    }
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //   performSegue(withIdentifier: "detail segue", sender: indexPath)
+    //    }
 }
 

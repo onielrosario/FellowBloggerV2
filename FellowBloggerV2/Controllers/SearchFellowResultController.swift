@@ -94,6 +94,7 @@ extension SearchFellowResultController: UITableViewDataSource {
 
 extension SearchFellowResultController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        searchController.searchBar.delegate = self
        guard let fellowsSearched = searchController.searchBar.text?.lowercased(),
         !fellowsSearched.isEmpty else {
             getBloggers()
@@ -103,3 +104,24 @@ extension SearchFellowResultController: UISearchResultsUpdating {
     }
 }
 
+extension SearchFellowResultController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            getBloggers()
+            return
+        }
+       self.bloggers = filterFellows(text: text)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.bloggers = filterFellows(text: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            getBloggers()
+            return
+        }
+        self.bloggers = filterFellows(text: text)
+    }
+}
