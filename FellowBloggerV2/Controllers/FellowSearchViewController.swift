@@ -32,6 +32,12 @@ class FellowSearchViewController: UIViewController {
         navigationItem.searchController = searchBarController
     }
     
+    
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+searchBarController.searchBar.resignFirstResponder()
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
     }

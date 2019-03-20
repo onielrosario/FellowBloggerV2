@@ -18,11 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="GG2-26-qSk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dWv-gg-Dj5" appends="YES" id="bvm-WA-RaT"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="V5E-7b-tEG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgy-n4-h6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dWv-gg-Dj5">
+                    <connections>
+                        <action selector="tapped:" destination="Re6-1S-cOm" id="q3O-cm-KkF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="828" y="83"/>
         </scene>
@@ -66,6 +75,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="h46-Ll-8jM" firstAttribute="bottom" secondItem="2WS-RJ-EPO" secondAttribute="bottom" id="3Ya-5m-yI5"/>
                             <constraint firstItem="h46-Ll-8jM" firstAttribute="trailing" secondItem="2WS-RJ-EPO" secondAttribute="trailing" id="6rm-fy-Bup"/>

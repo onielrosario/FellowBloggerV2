@@ -26,10 +26,6 @@ class SearchFellowResultController: UIViewController {
         getBloggers()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        print("peace")
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         getBloggers()
     }
@@ -50,6 +46,7 @@ class SearchFellowResultController: UIViewController {
         for blogger in bloggers {
             if (blogger.firstName?.lowercased().contains(text))! || (blogger.lastName?.lowercased().contains(text))! || blogger.displayName.lowercased().contains(text) {
                 newBloggers.append(blogger)
+                tableView.reloadData()
             }
         }
         return newBloggers
@@ -119,6 +116,15 @@ extension SearchFellowResultController: UISearchResultsUpdating {
 }
 
 extension SearchFellowResultController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        getBloggers()
+        searchBar.resignFirstResponder()
+        if (searchBar.text?.isEmpty)! {
+              self.navigationController?.popToRootViewController(animated: false)
+        }
+      
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             getBloggers()
@@ -141,7 +147,7 @@ extension SearchFellowResultController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.bloggers.removeAll()
-    getBloggers()
+         getBloggers()
         self.navigationController?.popToRootViewController(animated: false)
     }
 }

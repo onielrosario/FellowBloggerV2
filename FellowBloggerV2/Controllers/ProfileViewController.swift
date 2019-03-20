@@ -39,7 +39,6 @@ class ProfileViewController: UIViewController {
     public func getBlogs() {
         if blogger != nil {
              navigationController?.navigationBar.isHidden = false
-//               navigationController?.navigationBar.barTintColor = .white
             title = blogger.displayName
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(CancelPressed))
             self.profileViewHeader.editButton.isHidden = true
