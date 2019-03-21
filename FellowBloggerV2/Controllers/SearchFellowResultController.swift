@@ -110,7 +110,7 @@ extension SearchFellowResultController: UISearchResultsUpdating {
         !fellowsSearched.isEmpty else {
             return
         }
-       self.bloggers = filterFellows(text: fellowsSearched)
+//       self.bloggers = filterFellows(text: fellowsSearched)
     }
 }
 

@@ -125,6 +125,5 @@ extension NewsFeedViewController: UITableViewDataSource {
             }
         }
     }
-  
 }
 

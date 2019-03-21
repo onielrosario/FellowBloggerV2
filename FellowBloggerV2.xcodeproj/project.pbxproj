@@ -15,6 +15,10 @@
 		090BDECF223C2DA20088465A /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDECE223C2DA20088465A /* BioCell.swift */; };
 		090BDED1223C33E30088465A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED0223C33E30088465A /* EditBioViewController.swift */; };
 		090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED2223C3FA70088465A /* SearchFellowResultController.swift */; };
+		09111E272243412500992A42 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09111E262243412500992A42 /* Comment.swift */; };
+		095331022242EA6900DB51D8 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331012242EA6900DB51D8 /* Like.swift */; };
+		095331062242EB2000DB51D8 /* CommentsCollectionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331042242EB2000DB51D8 /* CommentsCollectionKeys.swift */; };
+		095331072242EB2000DB51D8 /* LikesCollectionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331052242EB2000DB51D8 /* LikesCollectionKeys.swift */; };
 		096461B7223F15C800665894 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B6223F15C800665894 /* FeedCell.swift */; };
 		096461B9223F28FB00665894 /* EditBloggViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461B8223F28FB00665894 /* EditBloggViewController.swift */; };
 		096461BB223FE2BC00665894 /* UIViewcontroller+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096461BA223FE2BC00665894 /* UIViewcontroller+extension.swift */; };
@@ -56,6 +60,10 @@
 		090BDECE223C2DA20088465A /* BioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
 		090BDED0223C33E30088465A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		090BDED2223C3FA70088465A /* SearchFellowResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFellowResultController.swift; sourceTree = "<group>"; };
+		09111E262243412500992A42 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		095331012242EA6900DB51D8 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		095331042242EB2000DB51D8 /* CommentsCollectionKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCollectionKeys.swift; sourceTree = "<group>"; };
+		095331052242EB2000DB51D8 /* LikesCollectionKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesCollectionKeys.swift; sourceTree = "<group>"; };
 		096461B6223F15C800665894 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		096461B8223F28FB00665894 /* EditBloggViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBloggViewController.swift; sourceTree = "<group>"; };
 		096461BA223FE2BC00665894 /* UIViewcontroller+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller+extension.swift"; sourceTree = "<group>"; };
@@ -116,6 +124,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		095331032242EAD600DB51D8 /* keys */ = {
+			isa = PBXGroup;
+			children = (
+				095331042242EB2000DB51D8 /* CommentsCollectionKeys.swift */,
+				095331052242EB2000DB51D8 /* LikesCollectionKeys.swift */,
+			);
+			path = keys;
+			sourceTree = "<group>";
+		};
 		096BD1882239862700CAD6C8 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +154,7 @@
 		096BD1932239862700CAD6C8 /* FellowBloggerV2 */ = {
 			isa = PBXGroup;
 			children = (
+				095331032242EAD600DB51D8 /* keys */,
 				090BDEC5223BED890088465A /* Cells */,
 				09F4F816223AD2EE00FDA7C0 /* supporting Files */,
 				09F4F811223AC54500FDA7C0 /* Storyboards */,
@@ -164,8 +182,10 @@
 		096BD1AF223994F000CAD6C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				095331012242EA6900DB51D8 /* Like.swift */,
 				096BD1B02239950300CAD6C8 /* Blog.swift */,
 				096BD1B22239951000CAD6C8 /* Blogger.swift */,
+				09111E262243412500992A42 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,7 +416,9 @@
 				096BD1B622399AAC00CAD6C8 /* Date+Extensions.swift in Sources */,
 				09F4F818223AD35100FDA7C0 /* MainTabController.swift in Sources */,
 				096BD1AA223993F100CAD6C8 /* AuthService.swift in Sources */,
+				09111E272243412500992A42 /* Comment.swift in Sources */,
 				090BDED1223C33E30088465A /* EditBioViewController.swift in Sources */,
+				095331072242EB2000DB51D8 /* LikesCollectionKeys.swift in Sources */,
 				096BD1B32239951000CAD6C8 /* Blogger.swift in Sources */,
 				096BD1AC2239940200CAD6C8 /* DBService.swift in Sources */,
 				096BD1B12239950300CAD6C8 /* Blog.swift in Sources */,
@@ -404,9 +426,11 @@
 				096BD1972239862700CAD6C8 /* ProfileViewController.swift in Sources */,
 				096BD1B822399AD200CAD6C8 /* String+Date.swift in Sources */,
 				096461BB223FE2BC00665894 /* UIViewcontroller+extension.swift in Sources */,
+				095331062242EB2000DB51D8 /* CommentsCollectionKeys.swift in Sources */,
 				090BDECF223C2DA20088465A /* BioCell.swift in Sources */,
 				09F4F820223B09BA00FDA7C0 /* ProfileView.swift in Sources */,
 				09F4F81C223AFB6600FDA7C0 /* IBDesignableViews.swift in Sources */,
+				095331022242EA6900DB51D8 /* Like.swift in Sources */,
 				09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */,
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,

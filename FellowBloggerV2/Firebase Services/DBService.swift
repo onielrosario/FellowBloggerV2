@@ -21,6 +21,10 @@ struct BloggersCollectionKeys {
     static let CoverImageURLKey = "coverImageURL"
     static let JoinedDateKey = "joinedDate"
     static let BioKey = "bio"
+    static let BlockedUsersKey = "blockedUsers"
+    static let GithubKey = "github"
+    static let TwitterKey = "twitter"
+    static let LinkedInKey = "linkedIn"
 }
 
 struct BlogsCollectionKeys {
