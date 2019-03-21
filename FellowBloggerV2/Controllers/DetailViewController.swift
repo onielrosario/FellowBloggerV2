@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailBlogImage: UIImageView!
     @IBOutlet weak var bloggerimage: CircularImageView!
     @IBOutlet weak var bloggerName: UILabel!
-    @IBOutlet weak var blogDescription: UITextView!
+    @IBOutlet weak var blogDescription: UILabel!
     var blog: Blog!
     private let authservice = AppDelegate.authService
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class DetailViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let editVC = storyboard.instantiateViewController(withIdentifier: "AddBlogVC") as! EditBloggViewController
             editVC.blog = self.blog
-            editVC.editblogDescription = self.blogDescription.text
+            editVC.editblogDescription = self.blogDescription.text ?? ""
             editVC.editImage = self.detailBlogImage.image
             self.navigationController?.pushViewController(editVC, animated: true)
         }
