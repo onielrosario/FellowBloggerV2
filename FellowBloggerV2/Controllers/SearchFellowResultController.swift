@@ -108,7 +108,6 @@ extension SearchFellowResultController: UISearchResultsUpdating {
         searchController.searchBar.delegate = self
        guard let fellowsSearched = searchController.searchBar.text?.lowercased(),
         !fellowsSearched.isEmpty else {
-            getBloggers()
             return
         }
        self.bloggers = filterFellows(text: fellowsSearched)
@@ -117,29 +116,14 @@ extension SearchFellowResultController: UISearchResultsUpdating {
 
 extension SearchFellowResultController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        getBloggers()
         searchBar.resignFirstResponder()
         if (searchBar.text?.isEmpty)! {
               self.navigationController?.popToRootViewController(animated: false)
         }
-      
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else {
-            getBloggers()
-            return
-        }
-       self.bloggers = filterFellows(text: text)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.bloggers = filterFellows(text: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
-            getBloggers()
             return
         }
         self.bloggers = filterFellows(text: text)
