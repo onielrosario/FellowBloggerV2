@@ -81,6 +81,7 @@ class EditViewController: UIViewController {
     private func configureTableview() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.scrollsToTop = true
         tableView.tableFooterView = UIView()
     }
     

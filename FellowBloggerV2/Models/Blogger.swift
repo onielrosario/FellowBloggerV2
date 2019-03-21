@@ -8,10 +8,7 @@
 
 import Foundation
 
-
-import Foundation
-
-struct Blogger {
+class Blogger {
     let bloggerId: String
     let displayName: String
     let email: String
@@ -21,6 +18,10 @@ struct Blogger {
     let firstName: String?
     let lastName: String?
     let bio: String?
+    let blockedUsers: [String]
+    let twitter: String?
+    let github: String?
+    let linkedIn: String?
     
     public var fullName: String {
         return ((firstName ?? "") + " " + (lastName ?? "")).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -34,7 +35,11 @@ struct Blogger {
          joinedDate: String,
          firstName: String?,
          lastName: String?,
-         bio: String?) {
+         bio: String?,
+         blockedUsers: [String],
+         twitter: String?,
+         github: String?,
+         linkedIn: String?) {
         self.bloggerId = userId
         self.displayName = displayName
         self.email = email
@@ -44,6 +49,10 @@ struct Blogger {
         self.firstName = firstName
         self.lastName = lastName
         self.bio = bio
+        self.blockedUsers = blockedUsers
+        self.twitter = twitter
+        self.github = github
+        self.linkedIn = linkedIn
     }
     
     init(dict: [String: Any]) {
@@ -56,5 +65,9 @@ struct Blogger {
         self.firstName = dict[BloggersCollectionKeys.FirstNameKey] as? String ?? "FirstName"
         self.lastName = dict[BloggersCollectionKeys.LastNameKey] as? String ?? "LastName"
         self.bio = dict[BloggersCollectionKeys.BioKey] as? String ?? "fellow bloggers are looking forward to reading your bio"
+        self.blockedUsers = dict[BloggersCollectionKeys.BlockedUsersKey] as? [String] ?? [String]()
+        self.twitter = dict[BloggersCollectionKeys.TwitterKey] as? String ?? ""
+        self.github = dict[BloggersCollectionKeys.GithubKey] as? String ?? ""
+        self.linkedIn = dict[BloggersCollectionKeys.LinkedInKey] as? String ?? ""
     }
 }

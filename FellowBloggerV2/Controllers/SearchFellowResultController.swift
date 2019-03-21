@@ -111,7 +111,7 @@ extension SearchFellowResultController: UISearchResultsUpdating {
             getBloggers()
             return
         }
-       self.bloggers = filterFellows(text: fellowsSearched)
+//       self.bloggers = filterFellows(text: fellowsSearched)
     }
 }
 
@@ -122,19 +122,6 @@ extension SearchFellowResultController: UISearchBarDelegate {
         if (searchBar.text?.isEmpty)! {
               self.navigationController?.popToRootViewController(animated: false)
         }
-      
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else {
-            getBloggers()
-            return
-        }
-       self.bloggers = filterFellows(text: text)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.bloggers = filterFellows(text: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
