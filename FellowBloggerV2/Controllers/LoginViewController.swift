@@ -31,6 +31,13 @@ let loginView = LoginView()
     authservice.authserviceCreateNewAccountDelegate = self
     authservice.authserviceExistingAccountDelegate = self
     }
+    
+    @IBAction func keyboardHandle(_ sender: UITapGestureRecognizer) {
+        loginView.emailTextField.resignFirstResponder()
+        loginView.nameTextField.resignFirstResponder()
+        loginView.passwordTextfield.resignFirstResponder()
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -42,6 +49,20 @@ extension LoginViewController: UITextFieldDelegate {
             !name.isEmpty, !email.isEmpty, !password.isEmpty else {
                showAlert(title: "Missing Fields", message: "all fields required", actionTitle: "OK")
                 return false
+        }
+        switch accountLoginState {
+        case .newAccount:
+            guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
+                showAlert(title: "Missing fields", message: "all fields required", actionTitle: "Try again")
+                return false
+            }
+            authservice.createNewAccount(username: name, email: email, password: password)
+        case .existingAccount:
+            guard !email.isEmpty, !password.isEmpty else {
+                showAlert(title: "Missing fields", message: "all fields required", actionTitle: "Try again")
+                return false
+            }
+            authservice.signInExistingAccount(email: email, password: password)
         }
         return true
     }

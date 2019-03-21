@@ -18,10 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="EVW-Ju-vDX"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5gF-nS-TnZ" appends="YES" id="lgT-KH-lVx"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Af-uH-4uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5gF-nS-TnZ">
+                    <connections>
+                        <action selector="keyboardHandle:" destination="iq0-n5-5YK" id="1ND-QS-N6S"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="35" y="-389"/>
         </scene>

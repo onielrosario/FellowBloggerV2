@@ -103,10 +103,18 @@ class ProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "ProfileCell")
     }
     
-    private func pushControllers(controller: String) {
+    private func pushControllers() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
-        navigationController?.pushViewController(destinationVC, animated: true)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditViewController
+        DBService.getBlogger(userId: user.uid) { (error, blogger) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let blogger = blogger {
+              destinationVC.user = blogger
+         self.navigationController?.pushViewController(destinationVC, animated: true)
+            }
+        }
+//        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue) {
@@ -156,7 +164,7 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     }
     
     func willEditProfile(_ profileHeaderView: ProfileView) {
-        pushControllers(controller: "EditVC")
+        pushControllers()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
