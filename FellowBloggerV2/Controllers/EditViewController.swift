@@ -28,7 +28,11 @@ class EditViewController: UIViewController {
     var user: Blogger!
     private var bloggerProfileImage: CircularButton!
     private var bloggerCoverImage: UIImageView!
-    private var bloggerInfo = [String]() {
+    var firstName = ""
+    var lastName = ""
+    var userName = ""
+    var bloggerBio = ""
+    public var bloggerInfo = [String]() {
         didSet {
             self.tableView.reloadData()
         }
@@ -45,7 +49,7 @@ class EditViewController: UIViewController {
         return ip
     }()
     private var editProfilePhoto: ProfilePhotos?
-    private var editLabels: [String] = ["First Name","Last Name","Username", "Edit Bio"]
+    private var editLabels: [String] = ["First Name","Last Name","Username", "Edit Bio    "]
     var tap: UITapGestureRecognizer!
     var bio = "" {
         didSet {
@@ -65,10 +69,10 @@ class EditViewController: UIViewController {
     }
     
     private func getMyInfo() {
-                self.bloggerInfo.append(user.firstName ?? "")
-                self.bloggerInfo.append(user.lastName ?? "")
-                self.bloggerInfo.append(user.displayName)
-                self.bloggerInfo.append(user.bio ?? "")
+                self.firstName = user.firstName ?? ""
+                self.lastName = user.lastName ?? ""
+                self.userName = user.displayName
+                self.bloggerBio = user.bio ?? ""
                 self.editProfileButton.kf.setImage(with: URL(string: user.photoURL ?? ""), for: .normal, placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
                 self.editCoverImage.kf.setImage(with: URL(string: user.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
             }
@@ -99,49 +103,48 @@ class EditViewController: UIViewController {
     private func pushControllers(controller: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
+        
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
-        guard !editTextFields.isEmpty,
-            editTextFields.count > 0,
-            let user = authservice.getCurrentUser(),
-            let imageData = editProfileButton.currentImage?.jpegData(compressionQuality: 1.0),
-            let coverImageData = editCoverImage.image?.jpegData(compressionQuality: 1.0),
-            !bio.isEmpty else  {
-                print("error with the text fields")
-                return
-        }
-       let firstName = editTextFields[0]
-        let lastName = editTextFields[1]
-        let userName = editTextFields[2]
-        StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(user.uid)") { [weak self] (error, imageURL) in
-            StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(user.uid)") { [weak self](error, coverURL) in
-                let request = user.createProfileChangeRequest()
-                request.photoURL = imageURL
-                request.displayName = userName
-                request.commitChanges(completion: { (error) in
-                    if let error = error {
-                        self?.showAlert(title: "error", message: error.localizedDescription, actionTitle: "OK")
-                    }
-                })
-                DBService.firestoreDB
-                    .collection(BloggersCollectionKeys.CollectionKey)
-                    .document(user.uid)
-                    .updateData([BloggersCollectionKeys.DisplayNameKey : userName,
-                                 BloggersCollectionKeys.CoverImageURLKey: coverURL?.absoluteString ?? "",
-                                 BloggersCollectionKeys.PhotoURLKey: imageURL?.absoluteString ?? "",
-                                 BloggersCollectionKeys.FirstNameKey: firstName,
-                                 BloggersCollectionKeys.LastNameKey: lastName,
-                                 BloggersCollectionKeys.BioKey: self?.bio ?? ""
-                        ], completion: { (error) in
-                            if let error = error {
-                                self?.showAlert(title: "error saving account info", message: error.localizedDescription, actionTitle: "try again")
-                            }
-                    })
+            guard !self.firstName.isEmpty,
+                   !self.lastName.isEmpty,
+                !self.userName.isEmpty,
+                !self.bloggerBio.isEmpty,
+                let user = authservice.getCurrentUser(),
+                let imageData = editProfileButton.currentImage?.jpegData(compressionQuality: 1.0),
+                let coverImageData = editCoverImage.image?.jpegData(compressionQuality: 1.0) else  {
+                    print("error with the text fields")
+                    return
             }
-            
-        }
+            StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(user.uid)") { [weak self] (error, imageURL) in
+                StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(user.uid)") { [weak self](error, coverURL) in
+                    let request = user.createProfileChangeRequest()
+                    request.photoURL = imageURL
+                    request.displayName = self?.userName
+                    request.commitChanges(completion: { (error) in
+                        if let error = error {
+                            self?.showAlert(title: "error", message: error.localizedDescription, actionTitle: "OK")
+                        }
+                    })
+                    DBService.firestoreDB
+                        .collection(BloggersCollectionKeys.CollectionKey)
+                        .document(user.uid)
+                        .updateData([BloggersCollectionKeys.DisplayNameKey : self!.userName,
+                                     BloggersCollectionKeys.CoverImageURLKey: coverURL?.absoluteString ?? "",
+                                     BloggersCollectionKeys.PhotoURLKey: imageURL?.absoluteString ?? "",
+                                     BloggersCollectionKeys.FirstNameKey: self!.firstName,
+                                     BloggersCollectionKeys.LastNameKey: self!.lastName,
+                                     BloggersCollectionKeys.BioKey: self!.bloggerBio
+                            ], completion: { (error) in
+                                if let error = error {
+                                    self?.showAlert(title: "error saving account info", message: error.localizedDescription, actionTitle: "try again")
+                                }
+                        })
+                }
+            }
+        
         performSegue(withIdentifier: "from edit to profile VC", sender: self)
     }
     
@@ -156,9 +159,6 @@ class EditViewController: UIViewController {
         let editBioVC = segue.source as! EditBioViewController
         self.bio = editBioVC.editBioTextView.text
     }
-    
-    
-    
 }
 
 extension EditViewController: UITableViewDataSource {
@@ -166,7 +166,11 @@ extension EditViewController: UITableViewDataSource {
         return editLabels.count
     }
     @objc private func textFieldTapped() {
-        pushControllers(controller: "EditBioVC")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editBioVC = storyboard.instantiateViewController(withIdentifier: "EditBioVC") as! EditBioViewController
+        let bio = bloggerInfo.last ?? ""
+        editBioVC.bio = bio
+    navigationController?.pushViewController(editBioVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -209,7 +213,9 @@ extension EditViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let editBioVC = storyboard.instantiateViewController(withIdentifier: "EditBioVC")
+            let editBioVC = storyboard.instantiateViewController(withIdentifier: "EditBioVC") as! EditBioViewController
+            let bio = editLabels[indexPath.row]
+             editBioVC.bio = bio
             navigationController?.pushViewController(editBioVC, animated: true)
         }
     }
@@ -229,19 +235,13 @@ extension EditViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        editTextFields.append(text)
-    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
             guard !text.isEmpty else {
                 return false
             }
         }
-        textField.resignFirstResponder()
         return true
     }
 }

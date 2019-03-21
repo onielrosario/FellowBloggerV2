@@ -119,11 +119,20 @@ class ProfileViewController: UIViewController {
     
     @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue) {
     let editVC = segue.source as! EditViewController
-      profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
-     profileViewHeader.coverImage.image = editVC.editCoverImage.image
-    profileViewHeader.fullNameLabel.text = "\(editVC.editTextFields[0]) \(editVC.editTextFields[1])"
-        profileViewHeader.bloggerName.text = "@\(editVC.editTextFields[2])"
-        profileViewHeader.bioText.text = editVC.bio
+        if user != nil {
+            profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
+            profileViewHeader.coverImage.image = editVC.editCoverImage.image
+            profileViewHeader.fullNameLabel.text = "\(editVC.bloggerInfo[0]) \(editVC.bloggerInfo[1])"
+            profileViewHeader.bloggerName.text = "@\(editVC.bloggerInfo[2])"
+            profileViewHeader.bioText.text = editVC.bloggerInfo[3]
+        } else  {
+            profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
+            profileViewHeader.coverImage.image = editVC.editCoverImage.image
+            profileViewHeader.fullNameLabel.text = "\(editVC.editTextFields[0]) \(editVC.editTextFields[1])"
+            profileViewHeader.bloggerName.text = "@\(editVC.editTextFields[2])"
+            profileViewHeader.bioText.text = editVC.bio
+        }
+     
     }
 }
 

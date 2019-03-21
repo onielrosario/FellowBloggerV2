@@ -10,9 +10,12 @@ import UIKit
 
 class EditBioViewController: UIViewController {
     @IBOutlet weak var editBioTextView: UITextView!
-    
+    public var bio: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if bio != nil {
+            editBioTextView.text = bio
+        }
     }
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
       performSegue(withIdentifier: "unwind from edit bio vc", sender: self)

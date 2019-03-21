@@ -16,6 +16,8 @@
 		090BDED1223C33E30088465A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED0223C33E30088465A /* EditBioViewController.swift */; };
 		090BDED3223C3FA70088465A /* SearchFellowResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BDED2223C3FA70088465A /* SearchFellowResultController.swift */; };
 		09111E272243412500992A42 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09111E262243412500992A42 /* Comment.swift */; };
+		09111E2922441AF200992A42 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09111E2822441AF200992A42 /* CommentsViewController.swift */; };
+		09111E2B22442DAD00992A42 /* RefatorEditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09111E2A22442DAD00992A42 /* RefatorEditProfileTableViewController.swift */; };
 		095331022242EA6900DB51D8 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331012242EA6900DB51D8 /* Like.swift */; };
 		095331062242EB2000DB51D8 /* CommentsCollectionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331042242EB2000DB51D8 /* CommentsCollectionKeys.swift */; };
 		095331072242EB2000DB51D8 /* LikesCollectionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095331052242EB2000DB51D8 /* LikesCollectionKeys.swift */; };
@@ -61,6 +63,8 @@
 		090BDED0223C33E30088465A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		090BDED2223C3FA70088465A /* SearchFellowResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFellowResultController.swift; sourceTree = "<group>"; };
 		09111E262243412500992A42 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		09111E2822441AF200992A42 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		09111E2A22442DAD00992A42 /* RefatorEditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefatorEditProfileTableViewController.swift; sourceTree = "<group>"; };
 		095331012242EA6900DB51D8 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		095331042242EB2000DB51D8 /* CommentsCollectionKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsCollectionKeys.swift; sourceTree = "<group>"; };
 		095331052242EB2000DB51D8 /* LikesCollectionKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesCollectionKeys.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		09F4F80D223AC50C00FDA7C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				09111E2A22442DAD00992A42 /* RefatorEditProfileTableViewController.swift */,
 				096461B8223F28FB00665894 /* EditBloggViewController.swift */,
 				09F4F80E223AC51F00FDA7C0 /* LoginViewController.swift */,
 				096BD1962239862700CAD6C8 /* ProfileViewController.swift */,
@@ -216,6 +221,7 @@
 				090BDED0223C33E30088465A /* EditBioViewController.swift */,
 				090BDED2223C3FA70088465A /* SearchFellowResultController.swift */,
 				096461BE2240273F00665894 /* DetailViewController.swift */,
+				09111E2822441AF200992A42 /* CommentsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				090BDECB223C08570088465A /* EditViewController.swift in Sources */,
 				096BD1AE2239941900CAD6C8 /* StorageService.swift in Sources */,
 				096BD1B622399AAC00CAD6C8 /* Date+Extensions.swift in Sources */,
+				09111E2B22442DAD00992A42 /* RefatorEditProfileTableViewController.swift in Sources */,
 				09F4F818223AD35100FDA7C0 /* MainTabController.swift in Sources */,
 				096BD1AA223993F100CAD6C8 /* AuthService.swift in Sources */,
 				09111E272243412500992A42 /* Comment.swift in Sources */,
@@ -431,6 +438,7 @@
 				09F4F820223B09BA00FDA7C0 /* ProfileView.swift in Sources */,
 				09F4F81C223AFB6600FDA7C0 /* IBDesignableViews.swift in Sources */,
 				095331022242EA6900DB51D8 /* Like.swift in Sources */,
+				09111E2922441AF200992A42 /* CommentsViewController.swift in Sources */,
 				09F4F80C223AC30400FDA7C0 /* LoginView.swift in Sources */,
 				096BD1952239862700CAD6C8 /* AppDelegate.swift in Sources */,
 				09F4F813223AD29600FDA7C0 /* FellowSearchViewController.swift in Sources */,

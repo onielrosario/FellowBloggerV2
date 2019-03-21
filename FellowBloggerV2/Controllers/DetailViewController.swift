@@ -40,7 +40,14 @@ class DetailViewController: UIViewController {
         detailBlogImage.image = editVC.newBlogImage.image
         blogDescription.text = editVC.blogDescription.text
     }
-
+    
+    
+    @IBAction func commentPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let commentVC = storyboard.instantiateViewController(withIdentifier: "commentVC")
+        navigationController?.pushViewController(commentVC, animated: true)
+    }
+    
     
     @IBAction func settingsPressed(_ sender: UIButton) {
         guard let user = authservice.getCurrentUser() else {

@@ -16,11 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var storeServicec = StorageService()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editVC = storyboard.instantiateViewController(withIdentifier: "refactorEditVC") as! RefatorEditProfileTableViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         if let _ = AppDelegate.authService.getCurrentUser() {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! MainTabController
-            window?.rootViewController = mainVC
+            window?.rootViewController = editVC
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
