@@ -56,6 +56,8 @@ class ProfileViewController: UIViewController {
                     self.profileViewHeader.bioText.text = blogger.bio
                     self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
                     self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
+                    self.github = blogger.github
+                    self.linkedIn = blogger.linkedIn
                     self.profileViewHeader.coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg") )
                 }
             }
@@ -91,6 +93,8 @@ class ProfileViewController: UIViewController {
                         self.profileViewHeader.bioText.text = blogger.bio
                         self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
                         self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
+                        self.github = blogger.github
+                        self.linkedIn = blogger.linkedIn
                         self.profileViewHeader.coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), placeholder: #imageLiteral(resourceName: "tealCover.jpg") )
                     }
                 }
@@ -130,6 +134,7 @@ class ProfileViewController: UIViewController {
             profileViewHeader.bioText.text = editVC.editBio.text
             self.github = editVC.editGithub.text
             self.linkedIn = editVC.editLinkedin.text
+            self.tableView.reloadData()
         }
     }
 }
@@ -165,7 +170,7 @@ extension ProfileViewController: UITableViewDataSource {
 }
 extension ProfileViewController: ProfileHeaderViewDelegate, MFMailComposeViewControllerDelegate {
     func linkedInPressed(_ profileHeaderView: ProfileView) {
-       UIApplication.shared.canOpenURL(NSURL (string: blogger.linkedIn ?? "")! as URL)
+        UIApplication.shared.open(URL(string: blogger.linkedIn!)!, options: [:], completionHandler: nil)
     }
     
     func emailPressed(_ profileHeaderView: ProfileView) {
@@ -179,7 +184,7 @@ extension ProfileViewController: ProfileHeaderViewDelegate, MFMailComposeViewCon
     }
     
     func githubPressed(_ profileHeaderView: ProfileView) {
-         UIApplication.shared.canOpenURL(NSURL (string: blogger.linkedIn ?? "")! as URL)
+        UIApplication.shared.open(URL(string: blogger.github!)!, options: [:], completionHandler: nil)
     }
     
     func willSignOut(_ profileHeaderView: ProfileView) {

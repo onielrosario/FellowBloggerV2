@@ -526,7 +526,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28J-nl-JfZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                                     <state key="normal" title="Button" image="tealCover"/>
                                                     <connections>
                                                         <action selector="coverImage:" destination="mvg-vS-UE8" eventType="touchUpInside" id="83K-vZ-2lr"/>
@@ -733,9 +733,11 @@
                         <outlet property="editLinkedin" destination="em6-zf-U95" id="eA6-rF-dh0"/>
                         <outlet property="editProfileImage" destination="n4k-Eh-Esb" id="Pct-kZ-4dy"/>
                         <outlet property="editUsername" destination="EqH-EE-d4t" id="uLQ-Kx-Ysh"/>
+                        <segue destination="RUy-bk-tVY" kind="unwind" identifier="from edit to profile VC" unwindAction="unwindFromEditViewControllerWithSegue:" id="ubp-an-9qg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4y-FM-Yjx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RUy-bk-tVY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2592.8000000000002" y="769.56521739130437"/>
         </scene>

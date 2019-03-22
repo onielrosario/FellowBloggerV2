@@ -56,40 +56,56 @@ class RefatorEditProfileTableViewController: UITableViewController {
     }
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
         guard let imageData = editProfileImage.currentImage?.jpegData(compressionQuality: 1.0),
-            let coverImageData = editCoverImage.currentImage?.jpegData(compressionQuality: 1.0) else  {
+            let coverImageData = editCoverImage.currentImage?.jpegData(compressionQuality: 1.0),
+        let firstname = editFirstNameTF.text, let lastname = editLastName.text,
+        let username = editUsername.text, let bio = editBio.text,
+        let linkedin = editLinkedin.text , let github = editGithub.text,
+            let updateBlogger = blogger, blogger != nil else  {
                 print("error with the text fields")
                 return
         }
-        StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(self.blogger.bloggerId)") { [weak self] (error, imageURL) in
-            StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(self!.blogger.bloggerId)") { [weak self](error, coverURL) in
-                let user = AppDelegate.authService.getCurrentUser()
-                let request = user?.createProfileChangeRequest()
-                request!.photoURL = imageURL
-                request!.displayName = self?.editUsername.text ?? ""
-                request!.commitChanges(completion: { (error) in
+        var photoUrl = ""
+        var coverUrl = ""
+        StorageService.postImage(imageData: imageData, imageName: "\(BloggersCollectionKeys.PhotoURLKey)/\(updateBlogger.bloggerId)") { [weak self] (error, imageURL) in
+            if let error = error {
+                self?.showAlert(title: "error", message: error.localizedDescription, actionTitle: "OK")
+            } else {
+                photoUrl = imageURL?.absoluteString ?? ""
+                DBService.firestoreDB
+                .collection(BloggersCollectionKeys.CollectionKey)
+                .document(updateBlogger.bloggerId)
+                .updateData([BloggersCollectionKeys.PhotoURLKey : photoUrl])
+        }
+            StorageService.postImage(imageData: coverImageData, imageName: "\(BloggersCollectionKeys.CoverImageURLKey)/\(updateBlogger.bloggerId)") { [weak self](error, coverURL) in
                     if let error = error {
                         self?.showAlert(title: "error", message: error.localizedDescription, actionTitle: "OK")
-                    }
-                })
-                DBService.firestoreDB
-                    .collection(BloggersCollectionKeys.BloggerIdKey)
-                    .document(BloggersCollectionKeys.BloggerIdKey)
-                    .updateData([ BloggersCollectionKeys.CoverImageURLKey : self!.blogger.coverImageURL ?? "",
-                                  BloggersCollectionKeys.PhotoURLKey : self!.blogger.coverImageURL ?? "",
-                                  BloggersCollectionKeys.FirstNameKey : self!.blogger.firstName ?? "",
-                                  BloggersCollectionKeys.LastNameKey : self!.blogger.lastName ?? "",
-                                  BloggersCollectionKeys.DisplayNameKey : self!.blogger.displayName ,
-                                  BloggersCollectionKeys.BioKey : self!.blogger.bio ?? "",
-                                  BloggersCollectionKeys.GithubKey : self!.blogger.github ?? "",
-                                  BloggersCollectionKeys.LinkedInKey : self!.blogger.linkedIn ?? "",
-                                  ], completion: { (error) in
-                                    if let error = error {
-                                        print(error)
-                                    }
-                                    self?.showAlert(title: nil, message: "profile updated", actionTitle: "OK")
-                    })
+                    } else {
+                        coverUrl = coverURL?.absoluteString ?? ""
+                        DBService.firestoreDB
+                            .collection(BloggersCollectionKeys.CollectionKey)
+                            .document(updateBlogger.bloggerId)
+                            .updateData([BloggersCollectionKeys.CoverImageURLKey : coverUrl])
+                }
             }
+            DBService.firestoreDB
+                .collection(BloggersCollectionKeys.CollectionKey)
+                .document(updateBlogger.bloggerId)
+                .updateData([
+                              BloggersCollectionKeys.FirstNameKey : firstname,
+                              BloggersCollectionKeys.LastNameKey : lastname,
+                              BloggersCollectionKeys.BioKey : bio,
+                              BloggersCollectionKeys.DisplayNameKey : username,
+                              BloggersCollectionKeys.GithubKey : github,
+                              BloggersCollectionKeys.LinkedInKey : linkedin,
+                              ], completion: { (error) in
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    self?.showAlert(title: "Profile updated", message: nil, actionTitle: "OK")
+                                }
+                })
         }
+          performSegue(withIdentifier: "from edit to profile VC", sender: self)
     }
     
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
