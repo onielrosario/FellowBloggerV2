@@ -28,6 +28,7 @@ class RefatorEditProfileTableViewController: UITableViewController {
     var blogger: Blogger!
     private lazy var imagePicker: UIImagePickerController = {
         let ip = UIImagePickerController()
+          ip.allowsEditing = true
         ip.delegate = self
         return ip
     }()

@@ -109,10 +109,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zK-1V-ATa">
-                    <rect key="frame" x="157.5" y="425" width="60" height="60"/>
+                    <rect key="frame" x="162.5" y="430" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="2zK-1V-ATa" secondAttribute="height" multiplier="1:1" id="2UK-Mz-thk"/>
-                        <constraint firstAttribute="height" constant="60" id="Lax-xy-xAs"/>
+                        <constraint firstAttribute="height" constant="50" id="Lax-xy-xAs"/>
                     </constraints>
                     <state key="normal" image="email"/>
                     <connections>
@@ -126,9 +126,9 @@
                 <constraint firstItem="ajR-HY-RpH" firstAttribute="top" secondItem="Ibu-rX-gc3" secondAttribute="bottom" constant="8" id="7JS-xa-6qj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YN5-RW-FGK" secondAttribute="trailing" constant="8" id="9Ef-9C-pbv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n7U-0A-Fio" secondAttribute="trailing" constant="8" id="9tf-oR-3Up"/>
+                <constraint firstItem="2zK-1V-ATa" firstAttribute="centerY" secondItem="ajR-HY-RpH" secondAttribute="centerY" id="FEU-or-cxZ"/>
                 <constraint firstItem="Ibu-rX-gc3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="P7u-XH-RTj"/>
                 <constraint firstItem="n7U-0A-Fio" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="aRV-No-XxD"/>
-                <constraint firstItem="YN5-RW-FGK" firstAttribute="top" secondItem="Ibu-rX-gc3" secondAttribute="bottom" constant="8" id="cNg-En-zsS"/>
                 <constraint firstItem="Ibu-rX-gc3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="caZ-rp-Eom"/>
                 <constraint firstItem="ajR-HY-RpH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="fFH-dc-eqz"/>
                 <constraint firstItem="231-oK-UXa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gyz-F4-Jvc"/>
@@ -137,7 +137,7 @@
                 <constraint firstItem="77g-3Z-mSQ" firstAttribute="top" secondItem="9Cp-ID-IFB" secondAttribute="bottom" constant="8" id="hMR-5s-Anr"/>
                 <constraint firstItem="zIY-Ik-30B" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="iGH-Rr-OCv"/>
                 <constraint firstItem="U6f-dV-uDC" firstAttribute="top" secondItem="zIY-Ik-30B" secondAttribute="bottom" id="jrN-PM-khD"/>
-                <constraint firstItem="2zK-1V-ATa" firstAttribute="top" secondItem="Ibu-rX-gc3" secondAttribute="bottom" constant="8" id="kpB-Bh-N2S"/>
+                <constraint firstItem="YN5-RW-FGK" firstAttribute="centerY" secondItem="2zK-1V-ATa" secondAttribute="centerY" id="lHN-Mc-ghE"/>
                 <constraint firstItem="9Cp-ID-IFB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="o3I-s0-0Oz"/>
                 <constraint firstItem="zIY-Ik-30B" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ock-RS-rFe"/>
                 <constraint firstItem="77g-3Z-mSQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="ooT-w7-oYG"/>

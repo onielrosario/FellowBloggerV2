@@ -50,47 +50,45 @@ class NewsFeedViewController: UIViewController {
                     print("failed to get blogs with error: \(error.localizedDescription)")
                 } else if let snapshot = snapshot {
                     self?.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
-                }
-                DispatchQueue.main.async {
-                    self?.refreshcontrol.endRefreshing()
-                }
-        }
-        listener = DBService.firestoreDB
-            .collection(BloggersCollectionKeys.CollectionKey)
-            .addSnapshotListener { [weak self] (snapshot, error) in
-                if let error = error {
-                    print("failed to get blogs with error: \(error.localizedDescription)")
-                } else if let snapshot = snapshot {
-                    self?.bloggers = snapshot.documents.map{ Blogger(dict: $0.data())}
-                    
+                    self!.blogs.forEach{ DBService.getBlogger(userId: $0.bloggerId, completion: { (error, blogger) in
+                        if let error = error {
+                            print("failed to get blogs with error: \(error.localizedDescription)")
+                        } else if let blogger = blogger {
+                            self?.bloggers.append(blogger)
+                        }
+                        })
                 }
         }
-    }
-    
-    private func  configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    private func pushControllers(controller: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
-        navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cell = sender as? FeedCell,
-            let indexPath = tableView.indexPath(for: cell),
-            let detailViewController = segue.destination as? DetailViewController else {
-                fatalError("cannot segue to detail")
+        DispatchQueue.main.async {
+            self?.refreshcontrol.endRefreshing()
         }
-        let blog = blogs[indexPath.row]
-        detailViewController.blog = blog
     }
-    
-    @IBAction func addBlog(_ sender: UIBarButtonItem) {
-        pushControllers(controller: "AddBlogVC")
+}
+
+private func  configureTableView() {
+    tableView.delegate = self
+    tableView.dataSource = self
+}
+
+private func pushControllers(controller: String) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let destinationVC = storyboard.instantiateViewController(withIdentifier: controller)
+    navigationController?.pushViewController(destinationVC, animated: true)
+}
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let cell = sender as? FeedCell,
+        let indexPath = tableView.indexPath(for: cell),
+        let detailViewController = segue.destination as? DetailViewController else {
+            fatalError("cannot segue to detail")
     }
+    let blog = blogs[indexPath.row]
+    detailViewController.blog = blog
+}
+
+@IBAction func addBlog(_ sender: UIBarButtonItem) {
+    pushControllers(controller: "AddBlogVC")
+}
 }
 
 extension NewsFeedViewController: UITableViewDelegate {
