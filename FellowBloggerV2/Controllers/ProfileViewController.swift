@@ -9,16 +9,20 @@
 import UIKit
 import Firebase
 import Kingfisher
+import MessageUI
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! 
     private lazy var profileViewHeader: ProfileView = {
-        let headerView = ProfileView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        let headerView = ProfileView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         return headerView
     }()
     private let authservice = AppDelegate.authService
     private var user: User!
     var blogger: Blogger!
+    var github: String?
+    var linkedIn: String?
+    var mail: String?
     private var listener: ListenerRegistration!
     private var blogs = [Blog]() {
         didSet {
@@ -33,6 +37,7 @@ class ProfileViewController: UIViewController {
         configureTableView()
         profileViewHeader.delegate = self
         getBlogs()
+  
     }
     
     
@@ -63,7 +68,7 @@ class ProfileViewController: UIViewController {
                         self.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
                     }
                 }
-            
+
         } else  {
             if let user = self.authservice.getCurrentUser() {
                 listener = DBService.firestoreDB
@@ -81,7 +86,8 @@ class ProfileViewController: UIViewController {
                     if let error = error {
                         print(error.localizedDescription)
                     } else if let blogger = blogger {
-                        self.profileViewHeader.profileImage.kf.setImage(with: URL(string: user.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
+                          self.blogger = blogger
+                        self.profileViewHeader.profileImage.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
                         self.profileViewHeader.bioText.text = blogger.bio
                         self.profileViewHeader.fullNameLabel.text = "\(blogger.fullName)"
                         self.profileViewHeader.bloggerName.text = "@\(blogger.displayName)"
@@ -91,6 +97,8 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+
+
     
     @objc private func CancelPressed() {
         self.dismiss(animated: true)
@@ -105,34 +113,24 @@ class ProfileViewController: UIViewController {
     
     private func pushControllers() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditVC") as! EditViewController
-        DBService.getBlogger(userId: user.uid) { (error, blogger) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let blogger = blogger {
-              destinationVC.user = blogger
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "refactorEditVC") as! RefatorEditProfileTableViewController
+      destinationVC.blogger = self.blogger
          self.navigationController?.pushViewController(destinationVC, animated: true)
             }
-        }
-//        navigationController?.pushViewController(destinationVC, animated: true)
-    }
+    
+
     
     @IBAction func unwindFromEditViewController(segue: UIStoryboardSegue) {
-    let editVC = segue.source as! EditViewController
+    let editVC = segue.source as! RefatorEditProfileTableViewController
         if user != nil {
-            profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
-            profileViewHeader.coverImage.image = editVC.editCoverImage.image
-            profileViewHeader.fullNameLabel.text = "\(editVC.bloggerInfo[0]) \(editVC.bloggerInfo[1])"
-            profileViewHeader.bloggerName.text = "@\(editVC.bloggerInfo[2])"
-            profileViewHeader.bioText.text = editVC.bloggerInfo[3]
-        } else  {
-            profileViewHeader.profileImage.image = editVC.editProfileButton.currentImage
-            profileViewHeader.coverImage.image = editVC.editCoverImage.image
-            profileViewHeader.fullNameLabel.text = "\(editVC.editTextFields[0]) \(editVC.editTextFields[1])"
-            profileViewHeader.bloggerName.text = "@\(editVC.editTextFields[2])"
-            profileViewHeader.bioText.text = editVC.bio
+            profileViewHeader.profileImage.image = editVC.editProfileImage.currentImage
+            profileViewHeader.coverImage.image = editVC.editCoverImage.currentImage
+            profileViewHeader.fullNameLabel.text = "\(editVC.editFirstNameTF.text ?? "") \(editVC.editLastName.text ?? "")"
+            profileViewHeader.bloggerName.text = "@" + editVC.editUsername.text!
+            profileViewHeader.bioText.text = editVC.editBio.text
+            self.github = editVC.editGithub.text
+            self.linkedIn = editVC.editLinkedin.text
         }
-     
     }
 }
 
@@ -165,7 +163,25 @@ extension ProfileViewController: UITableViewDataSource {
         return cell
     }
 }
-extension ProfileViewController: ProfileHeaderViewDelegate {
+extension ProfileViewController: ProfileHeaderViewDelegate, MFMailComposeViewControllerDelegate {
+    func linkedInPressed(_ profileHeaderView: ProfileView) {
+       UIApplication.shared.canOpenURL(NSURL (string: blogger.linkedIn ?? "")! as URL)
+    }
+    
+    func emailPressed(_ profileHeaderView: ProfileView) {
+        let emailTitle = "Hello!"
+        let recipients = ["\(String(describing: user.email))"]
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setToRecipients(recipients)
+       self.present(mc, animated: true, completion: nil)
+    }
+    
+    func githubPressed(_ profileHeaderView: ProfileView) {
+         UIApplication.shared.canOpenURL(NSURL (string: blogger.linkedIn ?? "")! as URL)
+    }
+    
     func willSignOut(_ profileHeaderView: ProfileView) {
         authservice.signOutAccount()
         showLoginView()
@@ -178,6 +194,10 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "My posts"
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true)
     }
     
     

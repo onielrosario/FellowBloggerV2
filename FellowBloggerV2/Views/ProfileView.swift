@@ -12,7 +12,12 @@ import UIKit
 protocol ProfileHeaderViewDelegate: AnyObject {
     func willSignOut(_ profileHeaderView: ProfileView)
     func willEditProfile(_ profileHeaderView: ProfileView)
+    func linkedInPressed(_ profileHeaderView: ProfileView)
+    func emailPressed(_ profileHeaderView: ProfileView)
+    func githubPressed(_ profileHeaderView: ProfileView)
 }
+
+
 
 class ProfileView: UIView {
     @IBOutlet var contentView: UIView!
@@ -52,5 +57,17 @@ class ProfileView: UIView {
     }
     
     
+    @IBAction func linkedInPressed(_ sender: UIButton) {
+        delegate?.linkedInPressed(self)
+    }
     
+    @IBAction func emailPressed(_ sender: UIButton) {
+    delegate?.emailPressed(self)
+    
+    }
+    
+    
+    @IBAction func github(_ sender: UIButton) {
+        delegate?.githubPressed(self)
+    }
 }

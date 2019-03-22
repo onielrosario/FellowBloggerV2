@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 import Toucan
 
-enum ProfilePhotos {
-    case profileImage
-    case coverImage
-}
+//enum ProfilePhotos {
+//    case profileImage
+//    case coverImage
+//}
 
 enum CurrentProfileStatus {
     case newAccount

@@ -30,7 +30,8 @@ class SearchFellowResultController: UIViewController {
         getBloggers()
     }
     
-    private func  getBloggers() {
+    
+    private func getBloggers() {
         DBService.firestoreDB.collection(BloggersCollectionKeys.CollectionKey)
             .getDocuments { [weak self] (snapshot, error) in
                 if let error = error {
@@ -43,12 +44,8 @@ class SearchFellowResultController: UIViewController {
     
     private func filterFellows(text: String) -> [Blogger] {
         var newBloggers = [Blogger]()
-        for blogger in bloggers {
-            if (blogger.firstName?.lowercased().contains(text))! || (blogger.lastName?.lowercased().contains(text))! || blogger.displayName.lowercased().contains(text) {
-                newBloggers.append(blogger)
-                tableView.reloadData()
-            }
-        }
+        newBloggers = self.bloggers.filter{ $0.firstName?.lowercased() == text.lowercased() || $0.displayName.lowercased() == text.lowercased() || $0.lastName?.lowercased() == text.lowercased() }
+        self.tableView.reloadData()
         return newBloggers
     }
     
@@ -92,7 +89,7 @@ extension SearchFellowResultController: UITableViewDataSource {
     }
     
     private func configureCellImage(cell: UITableViewCell, blogger: Blogger) {
-        cell.imageView?.contentMode = .scaleAspectFill
+        cell.imageView?.contentMode = .scaleAspectFit
         cell.imageView?.layer.cornerRadius = (cell.imageView?.bounds.width)! / 2.0
         cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         cell.imageView?.layer.borderWidth = 0.5
@@ -106,35 +103,40 @@ extension SearchFellowResultController: UITableViewDataSource {
 extension SearchFellowResultController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchController.searchBar.delegate = self
-       guard let fellowsSearched = searchController.searchBar.text?.lowercased(),
-        !fellowsSearched.isEmpty else {
-            getBloggers()
-            return
+        guard let fellowsSearched = searchController.searchBar.text?.lowercased(),
+            !fellowsSearched.isEmpty else {
+                return
         }
-//       self.bloggers = filterFellows(text: fellowsSearched)
+        getBloggers()
+        self.bloggers = filterFellows(text: fellowsSearched)
     }
 }
 
 extension SearchFellowResultController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        getBloggers()
         searchBar.resignFirstResponder()
         if (searchBar.text?.isEmpty)! {
-              self.navigationController?.popToRootViewController(animated: false)
+            self.navigationController?.popToRootViewController(animated: false)
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        self.bloggers = filterFellows(text: text)
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
-            getBloggers()
             return
         }
         self.bloggers = filterFellows(text: text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.bloggers.removeAll()
-         getBloggers()
+        getBloggers()
         self.navigationController?.popToRootViewController(animated: false)
     }
 }

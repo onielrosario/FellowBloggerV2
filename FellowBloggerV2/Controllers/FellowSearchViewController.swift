@@ -25,6 +25,7 @@ class FellowSearchViewController: UIViewController {
         sc.searchBar.autocapitalizationType = .none
         return sc
     }()
+ 
     
     
     override func viewDidLoad() {
