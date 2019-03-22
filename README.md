@@ -25,4 +25,4 @@
 - [ ] user can comment on a blog (see database schema for document fields)
 - [ ] user can view comments of a blog
 - [ ] user can block a fellow blogger (blogger will no longer appear in blog feed)
-- [ ] user can view a bloggers github and social media page (links will be available on the blogger's profile page)
+- [x] user can view a bloggers github and social media page (links will be available on the blogger's profile page)
