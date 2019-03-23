@@ -16,20 +16,20 @@ enum AccountStatus {
 }
 
 class LoginViewController: UIViewController {
-let loginView = LoginView()
+    let loginView = LoginView()
     private var authservice =  AppDelegate.authService
     private var blogger: Blogger!
     private var accountLoginState = AccountStatus.newAccount
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    view.addSubview(loginView)
-    loginView.delegate = self
-    loginView.nameTextField.delegate = self
-    loginView.emailTextField.delegate = self
-    loginView.passwordTextfield.delegate = self
-    authservice.authserviceCreateNewAccountDelegate = self
-    authservice.authserviceExistingAccountDelegate = self
+        view.addSubview(loginView)
+        loginView.delegate = self
+        loginView.nameTextField.delegate = self
+        loginView.emailTextField.delegate = self
+        loginView.passwordTextfield.delegate = self
+        authservice.authserviceCreateNewAccountDelegate = self
+        authservice.authserviceExistingAccountDelegate = self
     }
     
     @IBAction func keyboardHandle(_ sender: UITapGestureRecognizer) {
@@ -44,10 +44,10 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         guard let name = loginView.nameTextField.text,
-        let email = loginView.emailTextField.text,
-        let password = loginView.passwordTextfield.text,
+            let email = loginView.emailTextField.text,
+            let password = loginView.passwordTextfield.text,
             !name.isEmpty, !email.isEmpty, !password.isEmpty else {
-               showAlert(title: "Missing Fields", message: "all fields required", actionTitle: "OK")
+                showAlert(title: "Missing Fields", message: "all fields required", actionTitle: "OK")
                 return false
         }
         switch accountLoginState {
@@ -76,14 +76,14 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: loginViewDelegate {
     func didSelectLoginButton(_ loginView: LoginView, accountState: AccountStatus) {
         guard let email = loginView.emailTextField.text,
-        let pasword = loginView.passwordTextfield.text,
+            let pasword = loginView.passwordTextfield.text,
             let name = loginView.nameTextField.text else {
                 return
         }
         switch accountState {
         case .newAccount:
             guard !name.isEmpty, !email.isEmpty, !pasword.isEmpty else {
-               showAlert(title: "Missing fields", message: "all fields required", actionTitle: "Try again")
+                showAlert(title: "Missing fields", message: "all fields required", actionTitle: "Try again")
                 return
             }
             authservice.createNewAccount(username: name, email: email, password: pasword)

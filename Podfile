@@ -14,3 +14,7 @@ end
 target 'FellowBloggerV2' do
   fellow_blogger_pods
 end
+
+target 'FellowBloggerV2Tests' do
+  fellow_blogger_pods
+end

@@ -37,6 +37,8 @@ class RefatorEditProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         updateUI()
     }
+    
+    
     private func updateUI () {
         tableView.tableFooterView = UIView()
         editCoverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? ""), for: .normal)
@@ -55,6 +57,21 @@ class RefatorEditProfileTableViewController: UITableViewController {
     @IBAction func profileImagePressed(_ sender: CircularButton) {
         editProfilePhoto = ProfilePhotos.profileImage
     }
+    
+    func unwindFromEditBio(segue: UIStoryboardSegue) {
+        let editbioVC = segue.source as! EditBloggViewController
+        editBio.text = editbioVC.blogDescription.text
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? EditBioViewController else {
+            return
+        }
+     destination.bio = editBio.text
+    }
+    
+    
+    
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
         guard let imageData = editProfileImage.currentImage?.jpegData(compressionQuality: 1.0),
             let coverImageData = editCoverImage.currentImage?.jpegData(compressionQuality: 1.0),

@@ -111,7 +111,11 @@ class EditBloggViewController: UIViewController {
                     print("fail to post image with error: \(error.localizedDescription)")
                 } else if let imageURL = imageURL {
                     print("image posted and received")
-                    let blog = Blog(createdDate: Date.getISOTimestamp(), bloggerId: user.uid, imageURL: imageURL.absoluteString, blogDescription: newBlogDescription, documentId: docRef.documentID)
+                    let blog = Blog(createdDate: Date.getISOTimestamp(),
+                                    bloggerId: user.uid,
+                                    imageURL: imageURL.absoluteString,
+                                    blogDescription: newBlogDescription,
+                                    documentId: docRef.documentID)
                     DBService.postBlog(blog: blog)
                     self?.showAlert(title: "Success", message: "New blog Posted", style: .alert, handler: { (alert) in
                         self!.navigationController?.popViewController(animated: true)

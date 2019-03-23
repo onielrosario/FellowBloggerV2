@@ -46,7 +46,6 @@ final class DBService {
         return db
     }()
     
-    
     //create separate func to post cover image
     
     static public var generateDocumentId: String {
@@ -82,9 +81,36 @@ final class DBService {
                 ])
             { (error) in
                 if let error = error {
-                    print("posting reviewe error: \(error)")
+                    print("posting blog error: \(error)")
                 } else {
-                    print("review posted successfully to ref: \(blog.documentId)")
+                    print("blog posted successfully to ref: \(blog.documentId)")
+                }
+        }
+    }
+    
+
+    
+    static public func postComment(comment: Comment, blog: Blog) {
+        guard let user = AppDelegate.authService.getCurrentUser() else {
+            return
+        }
+        let docRef = DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .document(blog.documentId)
+            .collection(CommentsCollectionKeys.CollectionKey).document()
+        DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .document(blog.documentId)
+            .collection(CommentsCollectionKeys.CollectionKey)
+            .document(docRef.documentID)
+            .setData([CommentsCollectionKeys.CommentIdKey : docRef.documentID,
+                      CommentsCollectionKeys.CommentedByKey : user.uid,
+                      CommentsCollectionKeys.CommentTextKey : "nice!",
+                      CommentsCollectionKeys.CreatedDateKey : Date.getISOTimestamp(),
+                      CommentsCollectionKeys.BlogIdKey : blog.documentId
+            ]) { (error) in
+                if let error = error {
+                    print("failed to add comment with error: \(error.localizedDescription)")
                 }
         }
     }
