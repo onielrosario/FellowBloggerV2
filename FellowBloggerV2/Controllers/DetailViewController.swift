@@ -98,7 +98,6 @@ class DetailViewController: UIViewController {
         }
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
-        
     }
 
     
@@ -113,5 +112,4 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
 }

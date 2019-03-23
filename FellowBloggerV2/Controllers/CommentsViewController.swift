@@ -45,6 +45,8 @@ class CommentsViewController: UIViewController {
         currentUserImage.kf.setImage(with: URL(string: user?.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         textField.delegate = self
         let newView = UIImageView()
@@ -73,6 +75,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         let comment = comments[indexPath.row]
         cell.label.text = comment.commentText
         DBService.getBlogger(userId: comment.commentedBy) { (error, blogger) in
@@ -83,10 +86,6 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
     }
 }
 

@@ -123,7 +123,6 @@ final class DBService {
                     print("could not get comments with error: \(error.localizedDescription)")
                     completionHandler(nil, error)
                 } else if let comments = comments {
-                    dump(comments.documents)
                     let allComments = comments.documents.map{Comment(dict: $0.data())}
                     completionHandler(allComments,nil)
                 }

@@ -37,15 +37,11 @@ class ProfileViewController: UIViewController {
         configureTableView()
         profileViewHeader.delegate = self
         getBlogs()
-  
     }
     
     
     public func getBlogs() {
         if blogger != nil {
-             navigationController?.navigationBar.isHidden = false
-            title = blogger.displayName
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(CancelPressed))
             self.profileViewHeader.editButton.isHidden = true
             self.profileViewHeader.signOutButton.isHidden = true
             DBService.getBlogger(userId: blogger.bloggerId) { (error, blogger) in
@@ -70,7 +66,6 @@ class ProfileViewController: UIViewController {
                         self.blogs = snapshot.documents.map{Blog(dict: $0.data()) }.sorted{ $0.createdDate.date() >  $1.createdDate.date() }
                     }
                 }
-
         } else  {
             if let user = self.authservice.getCurrentUser() {
                 listener = DBService.firestoreDB
@@ -100,6 +95,15 @@ class ProfileViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow,
+        let destinationVC = segue.destination as? DetailViewController else {
+            return
+        }
+        let blog = self.blogs[indexPath.row]
+        destinationVC.blog = blog
     }
 
 
@@ -152,10 +156,15 @@ extension ProfileViewController: UITableViewDataSource {
         return blogs.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "segue to detaIl vc", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as? ProfileCell else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
         let blog = blogs[indexPath.row]
         cell.blogDescription.text = blog.blogDescription
         cell.blogImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "tealCover.jpg"))
