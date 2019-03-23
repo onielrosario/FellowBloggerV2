@@ -50,9 +50,6 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
-    
-    
     
     @IBAction func unwindFromAddViewController(segue: UIStoryboardSegue) {
         let editVC = segue.source as! EditBlogViewController

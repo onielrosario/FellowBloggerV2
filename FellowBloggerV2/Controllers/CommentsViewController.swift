@@ -15,6 +15,7 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var currentUserImage: CircularImageView!
     @IBOutlet weak var textField: UITextField!
     var blog: Blog!
+    weak var listener: ListenerRegistration!
     var comments = [Comment]() {
         didSet {
             DispatchQueue.main.async {
@@ -25,8 +26,8 @@ class CommentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         getcomments()
-        configureTableView()
+        getcomments()
+        configureUI()
     }
     
     private func getcomments() {
@@ -35,22 +36,33 @@ class CommentsViewController: UIViewController {
                 print(error)
             } else if let allComments = allComments {
                 self.comments = allComments
-//                print(self.comments.count)
             }
         }
     }
     
-    private func  configureTableView() {
+    private func  configureUI() {
+      let user = AppDelegate.authService.getCurrentUser()
+        currentUserImage.kf.setImage(with: URL(string: user?.photoURL?.absoluteString ?? ""), placeholder:#imageLiteral(resourceName: "ProfilePH.png") )
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 80
+        textField.delegate = self
+        let newView = UIImageView()
+        newView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        let icon = UIImage(named: "commentsLogo")
+        newView.image = icon
+        textField.rightViewMode = .whileEditing
+        textField.rightView = newView
     }
     
     
     @IBAction func AddCommentPressed(_ sender: UIBarButtonItem) {
-        
+        guard let newComment = textField.text, !newComment.isEmpty else  {
+            showAlert(title: nil, message: "enter a message", actionTitle: "OK")
+            return
+        }
+        DBService.postComment(comment: newComment, blog: blog)
+      navigationController?.popViewController(animated: true)
     }
 }
 
@@ -74,7 +86,15 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
+}
+
+extension CommentsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
 }

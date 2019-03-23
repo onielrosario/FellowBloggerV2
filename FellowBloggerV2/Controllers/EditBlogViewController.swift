@@ -134,9 +134,6 @@ class EditBlogViewController: UIViewController {
 
 extension EditBlogViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if blog == nil {
-        textView.text = ""
-        }
     }
 }
 

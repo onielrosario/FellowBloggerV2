@@ -88,7 +88,7 @@ final class DBService {
         }
     }
     
-    static public func postComment(comment: Comment, blog: Blog) {
+    static public func postComment(comment: String, blog: Blog) {
         guard let user = AppDelegate.authService.getCurrentUser() else {
             return
         }
@@ -103,7 +103,7 @@ final class DBService {
             .document(docRef.documentID)
             .setData([CommentsCollectionKeys.CommentIdKey : docRef.documentID,
                       CommentsCollectionKeys.CommentedByKey : user.uid,
-                      CommentsCollectionKeys.CommentTextKey : "nice!",
+                      CommentsCollectionKeys.CommentTextKey : comment,
                       CommentsCollectionKeys.CreatedDateKey : Date.getISOTimestamp(),
                       CommentsCollectionKeys.BlogIdKey : blog.documentId
             ]) { (error) in
