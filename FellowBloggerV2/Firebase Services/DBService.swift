@@ -88,8 +88,6 @@ final class DBService {
         }
     }
     
-
-    
     static public func postComment(comment: Comment, blog: Blog) {
         guard let user = AppDelegate.authService.getCurrentUser() else {
             return
@@ -111,6 +109,23 @@ final class DBService {
             ]) { (error) in
                 if let error = error {
                     print("failed to add comment with error: \(error.localizedDescription)")
+                }
+        }
+    }
+    
+    static public func GetComments(blog: Blog, completionHandler: @escaping([Comment]?, Error?) -> Void) {
+        DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .document(blog.documentId)
+            .collection(CommentsCollectionKeys.CollectionKey)
+            .getDocuments { (comments, error) in
+                if let error = error {
+                    print("could not get comments with error: \(error.localizedDescription)")
+                    completionHandler(nil, error)
+                } else if let comments = comments {
+                    dump(comments.documents)
+                    let allComments = comments.documents.map{Comment(dict: $0.data())}
+                    completionHandler(allComments,nil)
                 }
         }
     }

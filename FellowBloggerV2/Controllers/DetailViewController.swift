@@ -15,11 +15,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var bloggerimage: CircularImageView!
     @IBOutlet weak var bloggerName: UILabel!
     @IBOutlet weak var blogDescription: UILabel!
+    @IBOutlet weak var commentsButton: UIButton!
     var blog: Blog!
     private let authservice = AppDelegate.authService
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDetailVC()
+        updateUI()
     }
     func configureDetailVC() {
         detailBlogImage.kf.setImage(with: URL(string: blog.imageURL), placeholder:#imageLiteral(resourceName: "tealCover.jpg") )
@@ -31,12 +33,29 @@ class DetailViewController: UIViewController {
                 self.bloggerName.text = blogger.displayName
                 self.bloggerimage.kf.setImage(with: URL(string: blogger.photoURL ?? ""), placeholder: #imageLiteral(resourceName: "ProfilePH.png"))
             }
-        
         }
     }
     
+    private func updateUI() {
+        DBService.GetComments(blog: blog) { (comments, error) in
+            if let error = error {
+                print(error)
+            } else if let comments = comments {
+                let count = comments.count
+                if count > 0 {
+                     self.commentsButton.setTitle("view all \(count) comments", for: .normal)
+                } else  {
+                      self.commentsButton.setTitle("leave the first comment", for: .normal)
+                }
+            }
+        }
+    }
+
+    
+    
+    
     @IBAction func unwindFromAddViewController(segue: UIStoryboardSegue) {
-        let editVC = segue.source as! EditBloggViewController
+        let editVC = segue.source as! EditBlogViewController
         detailBlogImage.image = editVC.newBlogImage.image
         blogDescription.text = editVC.blogDescription.text
     }
@@ -44,7 +63,8 @@ class DetailViewController: UIViewController {
     
     @IBAction func commentPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let commentVC = storyboard.instantiateViewController(withIdentifier: "commentVC")
+        let commentVC = storyboard.instantiateViewController(withIdentifier: "customCommentsVC") as! CommentsViewController
+        commentVC.blog = blog
         navigationController?.pushViewController(commentVC, animated: true)
     }
     
@@ -62,7 +82,7 @@ class DetailViewController: UIViewController {
         }
         let editAction = UIAlertAction(title: "Edit", style: .default) { [unowned self] (action) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let editVC = storyboard.instantiateViewController(withIdentifier: "AddBlogVC") as! EditBloggViewController
+            let editVC = storyboard.instantiateViewController(withIdentifier: "AddBlogVC") as! EditBlogViewController
             editVC.blog = self.blog
             editVC.editblogDescription = self.blogDescription.text ?? ""
             editVC.editImage = self.detailBlogImage.image

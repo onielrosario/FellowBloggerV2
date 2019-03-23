@@ -9,7 +9,7 @@
 import UIKit
 import Toucan
 
-class EditBloggViewController: UIViewController {
+class EditBlogViewController: UIViewController {
     @IBOutlet weak var blogDescription: UITextView!
     @IBOutlet weak var newBlogImage: UIImageView!
     private lazy var imagePickerController: UIImagePickerController = {
@@ -132,7 +132,7 @@ class EditBloggViewController: UIViewController {
 }
 
 
-extension EditBloggViewController: UITextViewDelegate {
+extension EditBlogViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if blog == nil {
         textView.text = ""
@@ -140,7 +140,7 @@ extension EditBloggViewController: UITextViewDelegate {
     }
 }
 
-extension EditBloggViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditBlogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             print("original image is nil")

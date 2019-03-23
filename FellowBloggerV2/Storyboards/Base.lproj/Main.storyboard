@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAS-og-BRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6204" y="82"/>
+            <point key="canvasLocation" x="4326" y="45"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="C9g-nf-AWL">
@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pl5-AY-pE6" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1400"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="wFu-3J-Osi" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="8" width="60" height="60"/>
@@ -143,7 +143,7 @@
                                                     <action selector="settingsPressed:" destination="y6v-SD-4ZL" eventType="touchUpInside" id="ZUp-NO-v8s"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-oY-UoQ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-oY-UoQ">
                                                 <rect key="frame" x="0.0" y="88" width="375" height="211"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="wsn-oY-UoQ" secondAttribute="height" multiplier="16:9" id="Gfa-Th-xK3"/>
@@ -158,22 +158,15 @@
                                                 <state key="normal" image="like"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X9-Sq-K5s">
-                                                <rect key="frame" x="8" y="345" width="359" height="32"/>
+                                                <rect key="frame" x="8" y="345" width="359" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGF-Zf-FZz">
-                                                <rect key="frame" x="8" y="387" width="359" height="32"/>
+                                                <rect key="frame" x="8" y="385" width="359" height="30"/>
                                                 <state key="normal">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="view comments">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <attributedString key="attributedTitle"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="commentPressed:" destination="y6v-SD-4ZL" eventType="touchUpInside" id="V1R-1y-h2B"/>
@@ -190,7 +183,7 @@
                                             <constraint firstItem="yKe-bd-Gih" firstAttribute="top" secondItem="Pl5-AY-pE6" secondAttribute="top" constant="8" id="GiL-el-8op"/>
                                             <constraint firstItem="wFu-3J-Osi" firstAttribute="leading" secondItem="Pl5-AY-pE6" secondAttribute="leading" constant="8" id="RQ5-Af-Ibr"/>
                                             <constraint firstAttribute="trailing" secondItem="CjT-Ib-XYf" secondAttribute="trailing" constant="10" id="TbR-rI-LjC"/>
-                                            <constraint firstAttribute="height" constant="1000" id="ZP1-28-F8h"/>
+                                            <constraint firstAttribute="height" constant="1400" id="ZP1-28-F8h"/>
                                             <constraint firstItem="0X9-Sq-K5s" firstAttribute="top" secondItem="Q3g-Si-vsl" secondAttribute="bottom" constant="8" id="Zdo-Ey-Vo8"/>
                                             <constraint firstItem="LGF-Zf-FZz" firstAttribute="centerX" secondItem="0X9-Sq-K5s" secondAttribute="centerX" id="bkT-TP-XWH"/>
                                             <constraint firstItem="LGF-Zf-FZz" firstAttribute="height" secondItem="0X9-Sq-K5s" secondAttribute="height" id="gF9-UT-2Rz"/>
@@ -228,73 +221,14 @@
                         <outlet property="blogDescription" destination="0X9-Sq-K5s" id="m9q-yR-o92"/>
                         <outlet property="bloggerName" destination="CjT-Ib-XYf" id="XpA-up-hBD"/>
                         <outlet property="bloggerimage" destination="wFu-3J-Osi" id="JOD-1T-f7b"/>
+                        <outlet property="commentsButton" destination="LGF-Zf-FZz" id="5Cp-dp-qid"/>
                         <outlet property="detailBlogImage" destination="wsn-oY-UoQ" id="RTg-c9-xgV"/>
                         <segue destination="HVM-GR-0NZ" kind="presentation" identifier="show blog Detail vc" id="CeF-K1-fMy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEe-M1-KmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592.8000000000002" y="83.208395802098963"/>
-        </scene>
-        <!--Comments Table View Controller-->
-        <scene sceneID="ngO-Dv-HE4">
-            <objects>
-                <tableViewController storyboardIdentifier="commentVC" id="jnF-Bc-Fe3" customClass="CommentsTableViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ndo-jp-j5r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.28333655330000002" green="0.4279294481" blue="0.4480184968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <sections>
-                            <tableViewSection id="O5u-W4-TLu">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="ZHL-aE-ZNb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZHL-aE-ZNb" id="R77-hQ-A9S">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="UoD-va-Crl" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="33.5" height="33.5"/>
-                                                    <color key="backgroundColor" red="0.28333655330000002" green="0.4279294481" blue="0.4480184968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="UoD-va-Crl" secondAttribute="height" multiplier="1:1" id="gty-5G-3tA"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-o8-LKu">
-                                                    <rect key="frame" x="61.5" y="14.5" width="277.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UoD-va-Crl" firstAttribute="top" secondItem="R77-hQ-A9S" secondAttribute="top" constant="8" id="E3D-l0-bJf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XRp-o8-LKu" secondAttribute="trailing" constant="20" id="KBA-SK-oZU"/>
-                                                <constraint firstAttribute="bottom" secondItem="UoD-va-Crl" secondAttribute="bottom" constant="8" id="fi1-nG-CQN"/>
-                                                <constraint firstItem="XRp-o8-LKu" firstAttribute="leading" secondItem="UoD-va-Crl" secondAttribute="trailing" constant="20" id="jn4-Op-8D8"/>
-                                                <constraint firstItem="XRp-o8-LKu" firstAttribute="centerY" secondItem="UoD-va-Crl" secondAttribute="centerY" id="tQt-LK-Gcw"/>
-                                                <constraint firstItem="UoD-va-Crl" firstAttribute="leading" secondItem="R77-hQ-A9S" secondAttribute="leading" constant="8" id="vAG-zT-288"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="jnF-Bc-Fe3" id="dhK-Xj-iBP"/>
-                            <outlet property="delegate" destination="jnF-Bc-Fe3" id="f0X-CT-Pdk"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="MqE-mI-FOQ"/>
-                    <connections>
-                        <outlet property="bloggerComment" destination="XRp-o8-LKu" id="Ouv-bA-VHH"/>
-                        <outlet property="bloggerImage" destination="UoD-va-Crl" id="Kft-Bh-oUH"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2b9-Ip-QK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4357.6000000000004" y="74.212893553223395"/>
+            <point key="canvasLocation" x="1740" y="45"/>
         </scene>
         <!--Fellow Feed-->
         <scene sceneID="2fF-S7-P7G">
@@ -316,20 +250,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-Wp-MkH" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
-                                                    <rect key="frame" x="23" y="19" width="80" height="80"/>
+                                                    <rect key="frame" x="23" y="19" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="4Cs-Ih-4k7"/>
+                                                        <constraint firstAttribute="width" constant="50" id="4Cs-Ih-4k7"/>
                                                         <constraint firstAttribute="width" secondItem="dj8-Wp-MkH" secondAttribute="height" multiplier="1:1" id="vgH-HP-xaP"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tealCover" translatesAutoresizingMaskIntoConstraints="NO" id="a9A-Wt-tkH">
-                                                    <rect key="frame" x="0.0" y="109" width="375" height="211"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tealCover" translatesAutoresizingMaskIntoConstraints="NO" id="a9A-Wt-tkH">
+                                                    <rect key="frame" x="0.0" y="79" width="375" height="281.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="a9A-Wt-tkH" secondAttribute="height" multiplier="16:9" id="CEF-df-NXT"/>
+                                                        <constraint firstAttribute="width" secondItem="a9A-Wt-tkH" secondAttribute="height" multiplier="4:3" id="CEF-df-NXT"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Blog description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="agH-KF-agj">
-                                                    <rect key="frame" x="0.0" y="320" width="375" height="100"/>
+                                                    <rect key="frame" x="0.0" y="360.5" width="375" height="100"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="c37-p1-sfn"/>
@@ -381,12 +315,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgX-QF-MoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="-609"/>
+            <point key="canvasLocation" x="828" y="-720"/>
         </scene>
-        <!--Edit Blogg View Controller-->
+        <!--Edit Blog View Controller-->
         <scene sceneID="Fp7-10-Vn3">
             <objects>
-                <viewController storyboardIdentifier="AddBlogVC" id="EMB-5k-Dlc" customClass="EditBloggViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBlogVC" id="EMB-5k-Dlc" customClass="EditBlogViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IWD-4W-6AZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -450,6 +384,118 @@
             </objects>
             <point key="canvasLocation" x="3409" y="-720"/>
         </scene>
+        <!--Comments-->
+        <scene sceneID="OUU-h2-8iU">
+            <objects>
+                <viewController storyboardIdentifier="customCommentsVC" id="8HQ-B8-ZD9" customClass="CommentsViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DdJ-J0-R4D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-ip-jNN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="60" id="lTU-Jm-9cD" customClass="CommentTableViewCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lTU-Jm-9cD" id="Qfe-Ec-kDd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="7x3-Yu-4yN" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="43.5" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7x3-Yu-4yN" secondAttribute="height" multiplier="1:1" id="RAk-5m-xdq"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-1K-BRC">
+                                                    <rect key="frame" x="71.5" y="11" width="278.5" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2pZ-1K-BRC" firstAttribute="leading" secondItem="7x3-Yu-4yN" secondAttribute="trailing" constant="20" id="4Ec-un-n9c"/>
+                                                <constraint firstItem="7x3-Yu-4yN" firstAttribute="top" secondItem="Qfe-Ec-kDd" secondAttribute="top" constant="8" id="5KV-Wy-IMi"/>
+                                                <constraint firstAttribute="bottom" secondItem="7x3-Yu-4yN" secondAttribute="bottom" constant="8" id="7XO-5a-4Hm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2pZ-1K-BRC" secondAttribute="trailing" constant="10" id="CxY-rW-BKn"/>
+                                                <constraint firstItem="7x3-Yu-4yN" firstAttribute="leading" secondItem="Qfe-Ec-kDd" secondAttribute="leading" constant="8" id="I74-AM-dHZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2pZ-1K-BRC" secondAttribute="bottom" id="Mop-SD-69i"/>
+                                                <constraint firstItem="2pZ-1K-BRC" firstAttribute="top" secondItem="Qfe-Ec-kDd" secondAttribute="topMargin" id="PYG-Sa-Vb7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bloggerImage" destination="7x3-Yu-4yN" id="xqU-U0-DFj"/>
+                                            <outlet property="label" destination="2pZ-1K-BRC" id="pbq-To-lr1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfF-tE-dM2">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePH" translatesAutoresizingMaskIntoConstraints="NO" id="shp-YV-1Oq" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="shp-YV-1Oq" secondAttribute="height" multiplier="1:1" id="7cr-Tm-xMX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="leave  a comment..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Byh-cm-oug">
+                                        <rect key="frame" x="90" y="25" width="265" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="shp-YV-1Oq" secondAttribute="bottom" constant="10" id="4pQ-W6-o2T"/>
+                                    <constraint firstItem="shp-YV-1Oq" firstAttribute="top" secondItem="PfF-tE-dM2" secondAttribute="top" constant="10" id="ARw-fn-Buh"/>
+                                    <constraint firstAttribute="height" constant="80" id="FaN-eX-14H"/>
+                                    <constraint firstItem="shp-YV-1Oq" firstAttribute="leading" secondItem="PfF-tE-dM2" secondAttribute="leading" constant="10" id="O9A-8I-0VK"/>
+                                    <constraint firstItem="Byh-cm-oug" firstAttribute="centerY" secondItem="shp-YV-1Oq" secondAttribute="centerY" id="hSa-PP-wG4"/>
+                                    <constraint firstItem="Byh-cm-oug" firstAttribute="leading" secondItem="shp-YV-1Oq" secondAttribute="trailing" constant="20" id="lmJ-Bw-7VJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Byh-cm-oug" secondAttribute="trailing" constant="20" id="yI5-GA-SkV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.28333655330000002" green="0.4279294481" blue="0.4480184968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="PfF-tE-dM2" firstAttribute="leading" secondItem="mHD-fy-2se" secondAttribute="leading" id="COF-pm-Zji"/>
+                            <constraint firstItem="K4B-ip-jNN" firstAttribute="leading" secondItem="mHD-fy-2se" secondAttribute="leading" id="Y3p-Zl-pap"/>
+                            <constraint firstItem="mHD-fy-2se" firstAttribute="trailing" secondItem="PfF-tE-dM2" secondAttribute="trailing" id="nwQ-oK-Dh4"/>
+                            <constraint firstItem="PfF-tE-dM2" firstAttribute="bottom" secondItem="mHD-fy-2se" secondAttribute="bottom" id="pyR-qH-Q9s"/>
+                            <constraint firstItem="PfF-tE-dM2" firstAttribute="top" secondItem="K4B-ip-jNN" secondAttribute="bottom" id="rNX-i3-qhM"/>
+                            <constraint firstItem="K4B-ip-jNN" firstAttribute="top" secondItem="mHD-fy-2se" secondAttribute="top" id="x6d-dh-hRc"/>
+                            <constraint firstItem="mHD-fy-2se" firstAttribute="trailing" secondItem="K4B-ip-jNN" secondAttribute="trailing" id="xcW-kk-mJz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mHD-fy-2se"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comments" id="9H0-kq-M50">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="commentsLogo" id="mxT-yD-3NY">
+                            <connections>
+                                <action selector="AddCommentPressed:" destination="8HQ-B8-ZD9" id="MvA-kI-o7t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="currentUserImage" destination="shp-YV-1Oq" id="iyH-F9-Zcb"/>
+                        <outlet property="tableView" destination="K4B-ip-jNN" id="Z6d-BS-Ppd"/>
+                        <outlet property="textField" destination="Byh-cm-oug" id="seu-ZM-SFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nad-tc-zVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5265" y="-720"/>
+        </scene>
         <!--Main Tab Controller-->
         <scene sceneID="62c-9X-2nA">
             <objects>
@@ -508,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="751.57421289355329"/>
+            <point key="canvasLocation" x="828" y="878"/>
         </scene>
         <!--Edit Bio-->
         <scene sceneID="a2m-yG-vrR">
@@ -549,7 +595,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4u8-YQ-N6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="t8c-xh-J5e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4412" y="758"/>
+            <point key="canvasLocation" x="4326" y="770"/>
         </scene>
         <!--Refator Edit Profile Table View Controller-->
         <scene sceneID="FRa-K9-zgd">
@@ -842,7 +888,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYM-Px-CJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3477.5999999999999" y="757.87106446776613"/>
+            <point key="canvasLocation" x="3478" y="1214"/>
         </scene>
         <!--Feed-->
         <scene sceneID="WJW-Vf-trg">
@@ -861,7 +907,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odb-cO-pJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-609.44527736131943"/>
+            <point key="canvasLocation" x="-111" y="-720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cbk-y6-tqX">
@@ -897,25 +943,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfb-Xu-gHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5356" y="83"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eZA-gu-i7i">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kfb-g5-umc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cJv-LH-mVm">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="jnF-Bc-Fe3" kind="relationship" relationship="rootViewController" id="T82-jZ-TYf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dyt-Hs-1t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3472.8000000000002" y="75.112443778110944"/>
+            <point key="canvasLocation" x="3409" y="45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uh5-aq-35D">
@@ -935,6 +963,24 @@
             </objects>
             <point key="canvasLocation" x="1740" y="770"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W7M-fk-VZm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ugG-6T-ndC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bLk-YJ-5SF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8HQ-B8-ZD9" kind="relationship" relationship="rootViewController" id="KkS-k7-oPE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rk-2O-auJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4326" y="-720"/>
+        </scene>
     </scenes>
     <resources>
         <image name="News" width="25" height="25"/>
@@ -945,12 +991,13 @@
         <image name="User" width="25" height="25"/>
         <image name="UserFilled" width="25" height="25"/>
         <image name="cameraViewfinder" width="996" height="687"/>
+        <image name="commentsLogo" width="25" height="25"/>
         <image name="like" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="tealCover" width="1280" height="720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3M2-TR-jNa"/>
+        <segue reference="V5V-dz-PDC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.1569241187" green="0.5672338053" blue="0.58288388319999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

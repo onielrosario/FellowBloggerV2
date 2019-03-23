@@ -59,7 +59,7 @@ class RefatorEditProfileTableViewController: UITableViewController {
     }
     
     func unwindFromEditBio(segue: UIStoryboardSegue) {
-        let editbioVC = segue.source as! EditBloggViewController
+        let editbioVC = segue.source as! EditBlogViewController
         editBio.text = editbioVC.blogDescription.text
     }
     

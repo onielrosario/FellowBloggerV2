@@ -50,4 +50,24 @@ class CommentsCollectionTests: XCTestCase {
         }
         wait(for: [exp], timeout: 3.0)
     }
+    
+    
+    func testGetComments() {
+
+        let exp = expectation(description: "get comments")
+        let blogId = "Rxj31Ve6PeaLfVeOgSVm"
+        DBService.firestoreDB
+        .collection(BlogsCollectionKeys.CollectionKey)
+        .document(blogId)
+            .collection(CommentsCollectionKeys.CollectionKey)
+            .getDocuments { (comments, error) in
+                if let error = error {
+                    XCTFail("could not get comments with error: \(error.localizedDescription)")
+                } else if let comments = comments {
+                 exp.fulfill()
+                }
+        }
+          wait(for: [exp], timeout: 3.0)
+    }
+    
 }
